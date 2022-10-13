@@ -1,0 +1,35 @@
+<section class="boards">
+  <div class="container">
+    <div class="boards-inner">
+      <div class="controls">
+        <input type="text" class="controls-input" [(ngModel)]="searchText" placeholder="Search by Board name...">
+        <div class="controls-block">
+          <button class="controls-button" (click)="modalService.open()">Add board</button>
+          <div class="sort-block">
+            <span class="sort-text">Sort: </span>
+            <button class="sort-button">A-Z</button>
+            <button class="sort-button">Z-A</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="boards">
+        <div *ngFor="let board of boardsService.boards">
+          <div class="board" (click)="toBoard(board.id)">
+            <div class="board-id"> <strong>ID: </strong>{{board.id}}</div>
+            <div class="board-block">
+              <div class="board-name"> <span class="board-text">Board name: </span> <br> {{board.name}}</div>
+              <div class="board-description"> <span class="board-text">Board description: </span> <br> {{board.description}}</div>
+              <div class="board-tasks"> <span class="board-text">Tasks: </span> <br> <span>{{board.tasks}}</span></div>
+              <div class="board-creationDate"> <span class="board-text">Creation date: </span> <br> <span>{{board.creationDate| date: "MM/dd/yy"}}</span></div>
+              <div class="board-buttons">
+                <button class="board-button" (click)="detailsBoard(board.id)">Details</button>
+                <button class="board-button" (click)="updateBoard(board.id)">Update</button>
+                <button class="board-button" (click)="deleteBoard(board.id)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

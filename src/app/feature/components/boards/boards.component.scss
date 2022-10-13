@@ -1,0 +1,135 @@
+// Boards
+.boards {
+    width: 100%;
+}
+.boards-inner {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.board {
+    width: 100%;
+    border: 1px solid #bebebe;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    transition: all 150ms ease;
+    cursor: pointer;
+}
+.board:hover{
+    box-shadow: 0 0 11px rgba(25, 25, 25, 0.5); 
+}
+.board-id {
+    width: fit-content;
+    background-color: #3b3838;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+    cursor: auto;
+    user-select: text;
+}
+.board-block{
+    border-top: 1px dashed #bebebe;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.board-text{
+    font-weight: bold;
+}
+.board-name {
+    width: 230px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.board-description {
+    width: 400px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+.board-tasks {
+    width: 100px;
+}
+.board-creationDate {
+    width: 230px;
+}
+.board-button{
+    width: 90px;
+    height: 28px;
+    background-color: transparent;
+    border-radius: 5px;
+    color: black;
+    font-size: 14px;
+    transition: all 150ms ease;
+    cursor: pointer;
+    margin-right: 5px;
+    color: black;
+    border: 1px solid #bebebe;
+}
+.board-button:hover{
+    background-color: #eeeeee;
+}
+.board-button:last-child{
+    margin-right: 0px;
+}
+.controls{
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.controls-input {
+    width: 350px;
+    border: 1px solid #3b3838;
+    height: 28px;
+    color: black;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.controls-block {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+.controls-button {
+    width: 90px;
+    height: 28px;
+    background-color: #3b3838;
+    border-radius: 5px;
+    color: black;
+    font-size: 14px;
+    transition: all 150ms ease;
+    cursor: pointer;
+    margin-right: 5px;
+    color: white;
+}
+.sort-block {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+.sort-text {
+    text-transform: lowercase;
+    color: #3b3838;
+}
+.sort-button {
+    width: 60px;
+    height: 28px;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 150ms ease;
+    color: black;
+    border: 1px solid #bebebe;
+    background-color: transparent;
+}
+.sort-button:hover{
+    background-color: #eeeeee;
+}
+
