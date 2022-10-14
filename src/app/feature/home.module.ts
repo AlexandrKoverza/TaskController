@@ -15,7 +15,7 @@ import { BoardComponent } from './components/boards/components/board/board.compo
     EditComponent,
     PopupComponent,
     SearchPipePipe,
-    BoardComponent
+    BoardComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [DetailsComponent, BoardsComponent, EditComponent, PopupComponent],

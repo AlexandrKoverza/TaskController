@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: 'boards/board/details/:id', component: DetailsComponent },
   { path: 'boards/board/edit/:id', component: EditComponent },
   { path: 'boards/board/:id', component: BoardComponent },
-  { path: '**', component: ErrorComponent },
   { path: '', redirectTo: 'boards', pathMatch: 'full' },
+  { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({

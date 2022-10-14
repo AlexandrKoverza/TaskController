@@ -59,11 +59,18 @@
 .board-creationDate {
     width: 230px;
 }
+.board-buttons{
+    display: flex;
+    align-items: center;
+}
 .board-button{
-    width: 90px;
-    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33px;
+    height: 33px;
     background-color: transparent;
-    border-radius: 5px;
+    border-radius: 50%;
     color: black;
     font-size: 14px;
     transition: all 150ms ease;
@@ -71,6 +78,13 @@
     margin-right: 5px;
     color: black;
     border: 1px solid #bebebe;
+}
+.goBtn{
+    width: 100px;
+    border-radius: 5px;
+}
+.board-button img{
+    width: 15px;
 }
 .board-button:hover{
     background-color: #eeeeee;
@@ -99,7 +113,7 @@
 }
 .controls-button {
     width: 90px;
-    height: 28px;
+    height: 33px;
     background-color: #3b3838;
     border-radius: 5px;
     color: black;
@@ -119,8 +133,11 @@
     color: #3b3838;
 }
 .sort-button {
-    width: 60px;
-    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100px;
+    height: 33px;
     border-radius: 5px;
     margin-left: 5px;
     cursor: pointer;
@@ -131,5 +148,11 @@
 }
 .sort-button:hover{
     background-color: #eeeeee;
+}
+.sort-button img{
+    width: 20px;
+}
+.sortName{
+    width: 150px;
 }
 

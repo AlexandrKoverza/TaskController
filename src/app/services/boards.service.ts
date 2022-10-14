@@ -1,29 +1,47 @@
 import { Injectable } from '@angular/core';
-import { boards } from '../mock-data/boards';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Board } from '../mock-data/boards';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
-export interface Boards {
-  id: string | number;
-  name: string;
-  description: string;
-  tasks: number;
-  creationDate: number;
+const options = {
+  headers: new HttpHeaders({"Content-Type": "application/json"})
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class BoardsService {
-  boards: Boards[] = boards;
+export class BoardsService { 
+  url: string = "http://localhost:3000/Boards"
+  boards: Board[] = []
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
+  
+  getBoards(): Observable<Board[]> {
+    return this.http.get<Board[]>(this.url).pipe(
+      tap(boards => this.boards = boards )
+    )
+  }
 
-  public getBoardById(id: string) {
+  getBoardById(id: string) {
     return this.boards.find((x) => x.id == id);
   }
 
-  public editBoard(id: string, value: any) {
-    let actualCourse: any  = this.getBoardById(id);
-    let index = this.boards.indexOf(actualCourse);
-    this.boards[index] = value;
+  createBoard(board: Board): Observable<Board[]> {
+    return this.http.post<Board[]>(this.url, board)
+    .pipe(
+      tap(() => {
+        this.boards.push(board);
+      })
+    )
   }
+
+  deleteItem(id: any) {
+    const link = `${this.url}/${id}`
+    return this.http.delete<Board[]>(link, id)
+  }
+
+  updateItem(board: Board): Observable<Board[]> {
+    return this.http.patch<Board[]>(`${this.url}/${board.id}`, board, options)
+  }
+
 }

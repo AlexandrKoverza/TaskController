@@ -37,16 +37,14 @@ export class PopupComponent implements OnInit {
   }
 
   submit() {
-    const board = {
+    this.boardsService.createBoard({
       id: uuid(),
       name: this.form.value.name as string,
       description: this.form.value.description as string,
       tasks: 0,
       creationDate: Date.now(),
-    };
-    this.boardsService.boards.push(board)
-    this.modalService.close()
-    console.log(this.boardsService.boards);
-    
+    }).subscribe(() => {
+      this.modalService.close()    
+    })
   }
 }

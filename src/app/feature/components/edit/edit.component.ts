@@ -42,8 +42,14 @@ export class EditComponent implements OnInit {
   }
   
   saveBoard() {
-    this.boardsService.editBoard(this.boardId, this.form.value);
-    this.router.navigate(['/boards'], { relativeTo: this.route });
+    return this.boardsService.updateItem({
+      id: this.board.id,
+      name: this.form.value.name,
+      description: this.form.value.description,
+      tasks: this.board.tasks,
+      creationDate: this.board.creationDate
+    }).subscribe(() => this.router.navigate(['boards']))
+    
   }
 
   get editNames() {

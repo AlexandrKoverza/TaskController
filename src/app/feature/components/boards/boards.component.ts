@@ -1,5 +1,7 @@
+import { Observable } from 'rxjs';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Board } from 'src/app/mock-data/boards';
 import { BoardsService } from 'src/app/services/boards.service';
 import { ModalService } from 'src/app/services/modal.service';
 
@@ -11,7 +13,7 @@ import { ModalService } from 'src/app/services/modal.service';
 export class BoardsComponent implements OnInit {
   @Output() clickEmitter = new EventEmitter();
   searchText: string = ''
-  boards = this.boardsService.boards
+  boards: Board[] = []
 
   constructor(
     private router: Router,
@@ -20,6 +22,9 @@ export class BoardsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.boardsService.getBoards().subscribe((response) => {
+      this.boards = response
+    })
   }
 
   toBoard(id: number | string) {
@@ -30,11 +35,14 @@ export class BoardsComponent implements OnInit {
     this.router.navigate(['boards/board/details', id]);
   }
 
-  updateBoard(id: number | string) {
-    this.router.navigate(['boards/board/edit', id]);
+  updateBoard(board: Board) {
+    this.router.navigate(['boards/board/edit', board.id]);
+    return this.boardsService.updateItem(board)
   }
 
   deleteBoard(id: number | string) {
-    this.boardsService.boards = this.boardsService.boards.filter(item => item.id !== id);
+    return this.boardsService.deleteItem(id).subscribe(() => {
+      this.boards = this.boards.filter(item => item.id !==id)
+    })
   }
 }
