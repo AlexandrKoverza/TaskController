@@ -1,1 +1,112 @@
-<p>board works!</p>
+<section class="board-item">
+  <div class="container">
+    <div class="board-item-inner">
+      <div class="board-item-top board-top">
+        <button class="board-top__back" (click)="back()">🠘</button>
+        <span class="board-top__name">{{board.name}}</span>
+        <button class="board-top__delete" (click)="deleteBoard(board.id)">Delete board</button>
+      </div>
+      <div class="tasks-row">
+
+        <div class="task-do">
+          <div class="task-do__top">
+            <span class="task-do__name">TO DO</span>
+            <button class="task-do__button">
+              <img src="../../../../../../assets/plus.svg" alt="image">
+            </button>
+          </div>
+          <div class="task-list">
+            <div class="task-item">
+              <span class="task-item__name">Name</span>
+              <span class="task-item__date">Date</span>
+              <button class="task-item__cross">
+                <img src="../../../../../../assets/cross.svg" alt="image">
+              </button>
+              <button class="task-item__edit">edit</button>
+              <button class="task-item__archive">archive</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-do">
+          <div class="task-do__top">
+            <span class="task-do__name">IN PROGRESS</span>
+          </div>
+          <div class="task-list">
+            <div class="task-item">
+              <span class="task-item__name">Name</span>
+              <span class="task-item__date">Date</span>
+              <button class="task-item__cross">
+                <img src="../../../../../../assets/cross.svg" alt="image">
+              </button>
+              <button class="task-item__edit">edit</button>
+              <button class="task-item__archive">archive</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-do">
+          <div class="task-do__top">
+            <span class="task-do__name">READY</span>
+          </div>
+          <div class="task-list">
+            <div class="task-item">
+              <span class="task-item__name">Name</span>
+              <span class="task-item__date">Date</span>
+              <button class="task-item__cross">
+                <img src="../../../../../../assets/cross.svg" alt="image">
+              </button>
+              <button class="task-item__edit">edit</button>
+              <button class="task-item__archive">archive</button>
+            </div>
+            <div class="task-item">
+                <span class="task-item__name">Name</span>
+                <span class="task-item__date">Date</span>
+                <button class="task-item__cross">
+                  <img src="../../../../../../assets/cross.svg" alt="image">
+                </button>
+                <button class="task-item__edit">edit</button>
+                <button class="task-item__archive">archive</button>
+              </div>
+              <div class="task-item">
+                <span class="task-item__name">Name</span>
+                <span class="task-item__date">Date</span>
+                <button class="task-item__cross">
+                  <img src="../../../../../../assets/cross.svg" alt="image">
+                </button>
+                <button class="task-item__edit">edit</button>
+                <button class="task-item__archive">archive</button>
+              </div>
+              <div class="task-item">
+                <span class="task-item__name">Name</span>
+                <span class="task-item__date">Date</span>
+                <button class="task-item__cross">
+                  <img src="../../../../../../assets/cross.svg" alt="image">
+                </button>
+                <button class="task-item__edit">edit</button>
+                <button class="task-item__archive">archive</button>
+              </div>
+              <div class="task-item">
+                <span class="task-item__name">Name</span>
+                <span class="task-item__date">Date</span>
+                <button class="task-item__cross">
+                  <img src="../../../../../../assets/cross.svg" alt="image">
+                </button>
+                <button class="task-item__edit">edit</button>
+                <button class="task-item__archive">archive</button>
+              </div>
+              <div class="task-item">
+                <span class="task-item__name">Name</span>
+                <span class="task-item__date">Date</span>
+                <button class="task-item__cross">
+                  <img src="../../../../../../assets/cross.svg" alt="image">
+                </button>
+                <button class="task-item__edit">edit</button>
+                <button class="task-item__archive">archive</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -14,6 +14,7 @@ export class BoardsComponent implements OnInit {
   @Output() clickEmitter = new EventEmitter();
   searchText: string = ''
   boards: Board[] = []
+  name: any
 
   constructor(
     private router: Router,

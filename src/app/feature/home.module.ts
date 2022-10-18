@@ -7,6 +7,7 @@ import { PopupComponent } from './components/popup/popup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchPipePipe } from '../pipes/search-pipe.pipe';
 import { BoardComponent } from './components/boards/components/board/board.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [

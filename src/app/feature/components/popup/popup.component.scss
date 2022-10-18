@@ -9,7 +9,6 @@
     background-color: rgba(0, 0, 0, 0.6);
     transition: all .8 ease;
 }
-
 .popup-content {
     background-color: #fefefe;
     margin: 15% auto;
@@ -19,40 +18,22 @@
     z-index: 9999;
     border-radius: 5px;
 }
-
 .popup-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 15px;
 }
-
-.popup__title {
-    font-size: 25px;
-    font-weight: bold;
-}
-
 .popup__close {
     color: grey;
     font-size: 26px;
     font-weight: bold;
     cursor: pointer;
 }
-
 .popup-control {
     width: 100%;
     display: flex;
     flex-direction: column;
-}
-.popup-input {
-    width: 100%;
-    height: 28px;
-    background-color: transparent;
-    border: 1px solid #3b3838;
-    border-radius: 5px;
-    color: black;
-    font-size: 14px;
-    padding-left: 5px;
 }
 .popup-area{
     width: 100%;
@@ -65,22 +46,6 @@
     margin-top: 8px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.popup-button {
-    width: 120px;
-    height: 35px;
-    background-color: transparent;
-    border: 1px solid #bebebe;
-    border-radius: 5px;
-    color: black;
-    font-size: 16px;
-    transition: all 150ms ease;
-    cursor: pointer;
-    margin: 0 auto;
-    margin-top: 8px;
-}
-.popup-button:hover {
-    background-color: #eeeeee;
-  }
 .popup-input__error{
     font-size: 14px;
     color: red;

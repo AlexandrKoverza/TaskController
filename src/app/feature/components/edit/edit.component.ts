@@ -40,6 +40,10 @@ export class EditComponent implements OnInit {
       creationDate: new FormControl(this.board.creationDate)
     });
   }
+
+  back() {
+    this.router.navigate(['/boards']);
+  }
   
   saveBoard() {
     return this.boardsService.updateItem({

@@ -9,12 +9,12 @@
             <span class="sort-text">Sort by: </span>
             <button class="sort-button sortName">
               <img src="../../../../assets/a-z.svg" alt="image">
-                board name
+              board name
               <img src="../../../../assets/z-a.svg" alt="image">
             </button>
             <button class="sort-button">
               <img src="../../../../assets/1-9.svg" alt="image">
-                tasks
+              tasks
               <img src="../../../../assets/9-1.svg" alt="image"></button>
           </div>
         </div>
@@ -26,7 +26,9 @@
             <div class="board-name"> <span class="board-text">Board name: </span> <br> {{board.name}}</div>
             <div class="board-description"> <span class="board-text">Board description: </span> <br>
               {{board.description}}</div>
-            <div class="board-tasks"> <span class="board-text">Tasks: </span> <br> <span>{{board.tasks}}</span></div>
+            <div class="board-tasks"> <span class="board-text">Tasks: </span> <br> 
+              <span>{{board.tasks}}</span>
+            </div>
             <div class="board-creationDate"> <span class="board-text">Creation date: </span> <br>
               <span>{{board.creationDate | date: "MM/dd/yy"}}</span></div>
             <div class="board-buttons">

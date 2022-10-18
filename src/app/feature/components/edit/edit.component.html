@@ -1,10 +1,11 @@
 <section class="edit">
   <div class="container">
     <div class="edit-inner">
+      <button class="edit-back" (click)="back()">🠘</button>
       <p class="board-edit__id">Board ID: <span>{{ board.id }}</span></p>
       <form [formGroup]="form">
         <p class="board-edit__text">Board name:</p>
-        <input type="text" class="popup-input" placeholder="Update name..." formControlName="name" />
+        <input type="text" class="formInput" placeholder="Update name..." formControlName="name" />
         <p *ngIf="editNames.errors?.minlength" class="popup-input__error">min length
           {{ editNames.value.length - 10 }}</p>
         <p class="board-edit__text">Board description:</p>
@@ -14,7 +15,7 @@
       </form>
       <p class="board-edit__text">Tasks: {{ board.tasks }}</p>
       <p class="board-edit__text">Creation date: {{ board.creationDate | date: "d MMMM, y" }}</p>
-      <button class="board-edit__button" (click)="saveBoard()">Save</button>
+      <button class="formButton" (click)="saveBoard()">Save</button>
     </div>
   </div>
 </section>

@@ -1,0 +1,19 @@
+<section class="formSection">
+  <div class="container">
+    <div class="formInner">
+      <form class="formWrapper" [formGroup]="loginForm">
+        <h2 class="formTitle">Login</h2>
+        <div class="formBlock">
+          <span class="formName">Email</span>
+          <input formControlName="email" type="email" class="formInput" placeholder="Name...">
+        </div>
+        <div class="formBlock">
+          <span class="formName">Password</span>
+          <input formControlName="password" type="password" class="formInput" placeholder="Password...">
+        </div>
+        <button class="formButton" (click)="enter()">Enter</button>
+        <p class="formText">Not registered yet? <button (click)="toRegistration()">Registration</button> </p>
+      </form>
+    </div>
+  </div>
+</section>
