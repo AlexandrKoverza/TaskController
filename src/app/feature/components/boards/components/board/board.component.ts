@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { Board } from 'src/app/mock-data/boards';
 import { BoardsService } from 'src/app/services/boards.service';
+import {CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop'
 
 @Component({
   selector: 'app-board',
@@ -10,18 +12,26 @@ import { BoardsService } from 'src/app/services/boards.service';
 })
 export class BoardComponent implements OnInit {
   boards: Board[] = [];
-  boardId: any;
-  board: any;  
+  board$: Observable<Board> | undefined;
+  todo: any
+  progress: any
+  done: any
 
   constructor(
     public boardsService: BoardsService,
-    public route: ActivatedRoute,
+    public activatedRoute: ActivatedRoute,
     private router: Router,
-  ) {}
+  ) {
+    this.todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
+    this.progress = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+    this.done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+  }
 
   ngOnInit(): void {
-    this.boardId = this.route.snapshot.paramMap.get('id');
-    this.board = this.boardsService.getBoardById(this.boardId);
+      this.board$ = this.activatedRoute.paramMap.pipe(
+        switchMap((params: ParamMap) =>
+        this.boardsService.getBoard(params.get('id')!))
+    );
   }
 
   back() {
@@ -34,4 +44,20 @@ export class BoardComponent implements OnInit {
       this.router.navigate(['/boards']);
     })
   }
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+  }
+
 }
+
+

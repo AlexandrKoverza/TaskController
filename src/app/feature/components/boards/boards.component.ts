@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Board } from 'src/app/mock-data/boards';
 import { BoardsService } from 'src/app/services/boards.service';
@@ -11,10 +11,9 @@ import { ModalService } from 'src/app/services/modal.service';
   styleUrls: ['./boards.component.scss'],
 })
 export class BoardsComponent implements OnInit {
-  @Output() clickEmitter = new EventEmitter();
-  searchText: string = ''
-  boards: Board[] = []
-  name: any
+  searchText: string = '';
+  boards: Board[] = [];
+  boards$: Observable<Board[]> = of([])
 
   constructor(
     private router: Router,
@@ -23,13 +22,27 @@ export class BoardsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.boardsService.getBoards().subscribe((response) => {
-      this.boards = response
-    })
+    this.boards$ = this.boardsService.getBoards()
   }
 
   toBoard(id: number | string) {
     this.router.navigate(['boards/board', id]);
+  }
+
+  sortStartA(board: any) {
+    return board.sort((a: any, b: any) => (a.name > b.name ? -1 : 1));
+  }
+
+  sortStartZ(board: any) {
+    return board.sort((a: any, b: any) => (a.name > b.name ? 1 : -1));
+  }
+
+  sortUp(board: any) {
+    return board.sort((a: any, b: any) => (a.tasks > b.tasks ? -1 : 1));
+  }
+
+  sortDown(board: any) {
+    return board.sort((a: any, b: any) => (a.tasks > b.tasks ? 1 : -1));
   }
 
   detailsBoard(id: number | string) {
@@ -38,12 +51,13 @@ export class BoardsComponent implements OnInit {
 
   updateBoard(board: Board) {
     this.router.navigate(['boards/board/edit', board.id]);
-    return this.boardsService.updateItem(board)
+    return this.boardsService.updateItem(board);
   }
 
   deleteBoard(id: number | string) {
     return this.boardsService.deleteItem(id).subscribe(() => {
-      this.boards = this.boards.filter(item => item.id !==id)
-    })
+      this.boards = this.boards.filter((item) => item.id !== id);
+    });
   }
+
 }

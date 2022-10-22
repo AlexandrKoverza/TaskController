@@ -1,44 +1,75 @@
+<app-header></app-header>
 <section class="boards">
   <div class="container">
     <div class="boards-inner">
       <div class="controls">
-        <input type="text" class="controls-input" [(ngModel)]="searchText" placeholder="Search by Board name...">
+        <input
+          type="text"
+          class="controls-input"
+          [(ngModel)]="searchText"
+          placeholder="Search by Board name..."
+        />
         <div class="controls-block">
-          <button class="controls-button" (click)="modalService.open()">Add board</button>
+          <button class="controls-button" (click)="modalService.open()">
+            Add board
+          </button>
           <div class="sort-block">
-            <span class="sort-text">Sort by: </span>
-            <button class="sort-button sortName">
-              <img src="../../../../assets/a-z.svg" alt="image">
-              board name
-              <img src="../../../../assets/z-a.svg" alt="image">
+            <span class="sort-text">board name: </span>
+            <button class="sort-button" (click)="sortStartA(boards$)">
+              z - a
             </button>
-            <button class="sort-button">
-              <img src="../../../../assets/1-9.svg" alt="image">
-              tasks
-              <img src="../../../../assets/9-1.svg" alt="image"></button>
+            <button class="sort-button" (click)="sortStartZ(boards$)">
+              a - z
+            </button>
+            <span class="sort-text">tasks:</span>
+            <button class="sort-button" (click)="sortUp(boards$)">9 - 1</button>
+            <button class="sort-button" (click)="sortDown(boards$)">
+              1 - 9
+            </button>
           </div>
         </div>
       </div>
-      <div *ngFor="let board of boards | searchPipe: searchText">
-        <div class="board">
-          <div class="board-id"> <strong>ID: </strong>{{board.id}}</div>
-          <div class="board-block">
-            <div class="board-name"> <span class="board-text">Board name: </span> <br> {{board.name}}</div>
-            <div class="board-description"> <span class="board-text">Board description: </span> <br>
-              {{board.description}}</div>
-            <div class="board-tasks"> <span class="board-text">Tasks: </span> <br> 
-              <span>{{board.tasks}}</span>
-            </div>
-            <div class="board-creationDate"> <span class="board-text">Creation date: </span> <br>
-              <span>{{board.creationDate | date: "MM/dd/yy"}}</span></div>
-            <div class="board-buttons">
-              <button class="board-button goBtn" (click)="toBoard(board.id)">Go to board</button>
-              <button class="board-button" (click)="detailsBoard(board.id)"><img
-                  src="../../../../assets/circle-info-solid.svg" alt="image"></button>
-              <button class="board-button" (click)="updateBoard(board)"><img src="../../../../assets/pen-solid.svg"
-                  alt="image"></button>
-              <button class="board-button" (click)="deleteBoard(board.id)"><img
-                  src="../../../../assets/trash-can-regular.svg" alt="image"></button>
+      <div *ngIf="boards$ | async as boards">
+        <div *ngFor="let board of boards | searchPipe: searchText, let i = index">
+          <div class="board">
+            <div class="board-id"><strong>ID: </strong>{{ board.id }}</div>
+            <div class="board-block">
+              <div class="board-name">
+                <span class="board-text">Board name: </span> <br />
+                {{ board.name }}
+              </div>
+              <div class="board-description">
+                <span class="board-text">Board description: </span> <br />
+                {{ board.description }}
+              </div>
+              <div class="board-tasks">
+                <span class="board-text">Tasks: </span> <br />
+                <span>{{ board.tasks.length }}</span>
+              </div>
+              <div class="board-creationDate">
+                <span class="board-text">Creation date: </span> <br />
+                <span>{{ board.creationDate | date: "MM/dd/yy" }}</span>
+              </div>
+              <div class="board-buttons">
+                <button class="board-button goBtn" (click)="toBoard(board.id)">
+                  Go to board
+                </button>
+                <button class="board-button" (click)="detailsBoard(board.id)">
+                  <img
+                    src="../../../../assets/circle-info-solid.svg"
+                    alt="image"
+                  />
+                </button>
+                <button class="board-button" (click)="updateBoard(board)">
+                  <img src="../../../../assets/pen-solid.svg" alt="image" />
+                </button>
+                <button class="board-button" (click)="deleteBoard(board.id)">
+                  <img
+                    src="../../../../assets/trash-can-regular.svg"
+                    alt="image"
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>

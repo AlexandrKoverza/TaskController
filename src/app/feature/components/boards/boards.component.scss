@@ -129,14 +129,18 @@
     margin-right: 10px;
 }
 .sort-text {
+    display: block;
     text-transform: lowercase;
     color: #3b3838;
+}
+.sort-text:last-child{
+    margin-left: 5px;
 }
 .sort-button {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    width: 100px;
+    width: 40px;
     height: 33px;
     border-radius: 5px;
     margin-left: 5px;
@@ -146,13 +150,12 @@
     border: 1px solid #bebebe;
     background-color: transparent;
 }
+.sort-button:nth-child(3) {
+    margin-right: 5px;
+}
 .sort-button:hover{
     background-color: #eeeeee;
 }
-.sort-button img{
-    width: 20px;
-}
-.sortName{
-    width: 150px;
-}
+
+
 

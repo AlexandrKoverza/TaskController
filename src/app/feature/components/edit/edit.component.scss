@@ -1,5 +1,9 @@
+
 .edit {
     width: 600px;
+    @media (max-width: 767px) {
+        width: 100%;
+    }
 }
 .edit-inner {
     padding-top: 15px;

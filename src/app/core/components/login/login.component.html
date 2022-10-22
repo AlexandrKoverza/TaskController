@@ -6,12 +6,14 @@
         <div class="formBlock">
           <span class="formName">Email</span>
           <input formControlName="email" type="email" class="formInput" placeholder="Name...">
+          <p class="formError" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email')">Email is not valid</p>
         </div>
         <div class="formBlock">
           <span class="formName">Password</span>
           <input formControlName="password" type="password" class="formInput" placeholder="Password...">
+          <p class="formError" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">Password is not valid</p>
         </div>
-        <button class="formButton" (click)="enter()">Enter</button>
+        <button class="formButton" [disabled]="!loginForm.valid" (click)="enter()">Enter</button>
         <p class="formText">Not registered yet? <button (click)="toRegistration()">Registration</button> </p>
       </form>
     </div>

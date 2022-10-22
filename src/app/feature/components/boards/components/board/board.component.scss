@@ -43,7 +43,7 @@
 .tasks-row {
     margin: 0 auto;
     margin-top: 15px;
-    width: 900px;
+    width: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -75,7 +75,8 @@
 }
 .task-list {
     width: 100%;
-    max-height: 530px;
+    min-height: 530px;
+    // overflow: hidden;
     overflow-y: scroll;
     padding: 8px;
     border: 1px solid #bebebe;
@@ -152,4 +153,45 @@
     margin: 2px;
     background-color: #bebebe;
     border-radius: 9em;
+}
+.sort-block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+.sortBlock{
+    margin-right: 0;
+    margin-top: 15px;
+}
+.sort-text {
+    display: block;
+    text-transform: lowercase;
+    color: #3b3838;
+}
+.sort-text:last-child{
+    margin-left: 5px;
+}
+.sort-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40px;
+    height: 33px;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 150ms ease;
+    color: black;
+    border: 1px solid #bebebe;
+    background-color: transparent;
+}
+.sort-button:nth-child(3) {
+    margin-right: 5px;
+}
+.sort-button:hover{
+    background-color: #eeeeee;
+}
+.sortDate{
+    width: 80px;
 }

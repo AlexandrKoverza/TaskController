@@ -1,46 +1,54 @@
 {
   "Boards": [
     {
-      "id": "29c2e354-24ed-4e09-9b2c-01ed341d5c00",
-      "name": "укепаыап",
-      "description": "ывапывапывап",
-      "tasks": 0,
-      "creationDate": 1666038289840
+      "id": "648ede33-b1d3-40e0-9bbe-ddb4f78210c4",
+      "name": "Тестовая доска1",
+      "description": "Тестовое описание доски",
+      "tasks": [
+        {
+          "name": "task 1",
+          "creationData": 1666371895211,
+          "todo": true,
+          "progress": false,
+          "done": false,
+          "status": "no archived"
+        },
+        {
+          "name": "task 2",
+          "creationData": 1666371895211,
+          "todo": true,
+          "progress": false,
+          "done": false,
+          "status": "no archived"
+        }
+      ],
+      "creationDate": 1666371895211
     },
     {
-      "id": "a82bbdcd-7a96-44c4-b7bd-54edccee7fc4",
-      "name": "аввапвапвап",
-      "description": "вапвапвапвап",
-      "tasks": 0,
-      "creationDate": 1666092629109
+      "id": "b7916185-4f30-484a-9255-5a941b1d463a",
+      "name": "zxccv",
+      "description": "asdfva",
+      "tasks": [],
+      "creationDate": 1666462489072
     },
     {
-      "id": "27673fcb-bae1-4264-9176-01c6c580cec9",
-      "name": "яываяаяа",
-      "description": "ваяаяваява",
-      "tasks": 0,
-      "creationDate": 1666092641410
-    },
-    {
-      "id": "423cc7a7-b54b-42b6-8e74-35a7e183f5fa",
-      "name": "яаааавяуцукцуацуац",
-      "description": "",
-      "tasks": 0,
-      "creationDate": 1666092649458
-    },
-    {
-      "id": "564e2fbe-1968-41bf-bda3-e0ffde4facde",
-      "name": "нананранрарапрапрапр",
-      "description": "",
-      "tasks": 0,
-      "creationDate": 1666092657651
+      "id": "eba65df2-5c0b-4f63-971c-77193fdf5f09",
+      "name": "xzcvzxcvzxcvzxcvxz",
+      "description": "adsc ",
+      "tasks": [],
+      "creationDate": 1666462619752
     }
   ],
   "SingUpUsers": [
     {
-      "email": "петя",
-      "password": "петя",
+      "email": "nik",
+      "password": "nik",
       "id": 1
+    },
+    {
+      "email": "nik",
+      "password": "nik",
+      "id": 2
     }
   ]
 }

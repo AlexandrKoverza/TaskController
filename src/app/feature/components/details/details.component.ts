@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
 import { Board } from 'src/app/mock-data/boards';
 import { BoardsService } from 'src/app/services/boards.service';
 
@@ -9,20 +10,21 @@ import { BoardsService } from 'src/app/services/boards.service';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent implements OnInit {
-  boardId: any;
-  board: any;
-  boards: Board[] = []
+  board$: Observable<Board> | undefined;
 
   constructor(
     private router: Router,
-    public route: ActivatedRoute,
+    public activatedRoute: ActivatedRoute,
     public boardsService: BoardsService
   ) {}
 
   ngOnInit(): void {
-    this.boardId = this.route.snapshot.paramMap.get('id');
-    this.board = this.boardsService.getBoardById(this.boardId);
+    this.board$ = this.activatedRoute.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.boardsService.getBoard(params.get('id')!))
+    );
   }
+
   back() {
     this.router.navigate(['/boards']);
   }
