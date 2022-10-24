@@ -1,4 +1,3 @@
-import { BoardComponent } from './feature/components/boards/components/board/board.component';
 import { EditComponent } from './feature/components/edit/edit.component';
 import { ErrorComponent } from './core/components/error/error.component';
 import { BoardsComponent } from './feature/components/boards/boards.component';
@@ -7,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './feature/components/details/details.component';
 import { LoginComponent } from './core/components/login/login.component';
 import { RegistrationComponent } from './core/components/registration/registration.component';
+import { BoardComponent } from './feature/components/board/board.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },

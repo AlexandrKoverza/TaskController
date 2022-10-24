@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HeaderService } from 'src/app/services/header.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +7,7 @@ import { HeaderService } from 'src/app/services/header.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor( private router: Router, public headerService: HeaderService,) { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
   }

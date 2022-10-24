@@ -1,42 +1,25 @@
 {
   "Boards": [
     {
-      "id": "648ede33-b1d3-40e0-9bbe-ddb4f78210c4",
-      "name": "Тестовая доска1",
-      "description": "Тестовое описание доски",
-      "tasks": [
-        {
-          "name": "task 1",
-          "creationData": 1666371895211,
-          "todo": true,
-          "progress": false,
-          "done": false,
-          "status": "no archived"
-        },
-        {
-          "name": "task 2",
-          "creationData": 1666371895211,
-          "todo": true,
-          "progress": false,
-          "done": false,
-          "status": "no archived"
-        }
-      ],
-      "creationDate": 1666371895211
+      "id": "50cbdddd-1177-4bc1-9741-4c3330eeee62",
+      "name": "Test board545454",
+      "description": "Test board description",
+      "tasks": [],
+      "creationDate": 1666623146601
     },
     {
-      "id": "b7916185-4f30-484a-9255-5a941b1d463a",
-      "name": "zxccv",
-      "description": "asdfva",
+      "id": "aacbb730-69cc-498d-957c-59e136853798",
+      "name": "sdgfgsdg",
+      "description": "sdfgsdfgs",
       "tasks": [],
-      "creationDate": 1666462489072
+      "creationDate": 1666628677885
     },
     {
-      "id": "eba65df2-5c0b-4f63-971c-77193fdf5f09",
-      "name": "xzcvzxcvzxcvzxcvxz",
-      "description": "adsc ",
+      "id": "5598f85f-9271-4795-a943-4c8f45314c82",
+      "name": "sdgfgsdg",
+      "description": "sdfgsdfgs",
       "tasks": [],
-      "creationDate": 1666462619752
+      "creationDate": 1666628680499
     }
   ],
   "SingUpUsers": [
