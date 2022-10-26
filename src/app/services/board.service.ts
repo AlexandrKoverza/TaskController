@@ -1,5 +1,7 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, Observable, of, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { Board } from '../mock-data/boards';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -74,7 +76,8 @@ export class BoardService {
   board: any[] = this.initBoard;
   board$ = new BehaviorSubject<any[]>(this.initBoard)
 
-  constructor() {}
+  constructor(private http: HttpClient) {    
+  }
 
   getBoard$() {
     return this.board$.asObservable()

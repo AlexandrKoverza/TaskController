@@ -2,6 +2,9 @@
   <div class="container">
     <div class="header-inner">
       <span class="header-name">Task Control</span>
+      <div *ngIf="userName">
+        <p>{{userName}}</p>
+      </div>
       <button class="header-button" (click)="exit()">Exit</button>
     </div>
   </div>

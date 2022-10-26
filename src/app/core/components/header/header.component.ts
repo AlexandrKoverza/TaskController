@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   constructor( private router: Router) { }
 
+  userName = localStorage.getItem('userEmail')
+
   ngOnInit(): void {
   }
 

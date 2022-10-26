@@ -42,7 +42,7 @@ export class PopupComponent implements OnInit {
         id: uuid(),
         name: this.form.value.name as string,
         description: this.form.value.description as string,
-        tasks: [
+        board: [
         // {   name: '1111',
         //   creationData: Date.now(),
         //   todo: true,

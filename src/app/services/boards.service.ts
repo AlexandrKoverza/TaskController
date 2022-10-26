@@ -48,4 +48,5 @@ export class BoardsService {
   updateItem(board: Board): Observable<Board[]> {
     return this.http.patch<Board[]>(`${this.url}/${board.id}`, board, options);
   }
+
 }

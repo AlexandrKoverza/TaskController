@@ -1,25 +1,73 @@
 {
   "Boards": [
     {
-      "id": "50cbdddd-1177-4bc1-9741-4c3330eeee62",
-      "name": "Test board545454",
-      "description": "Test board description",
-      "tasks": [],
-      "creationDate": 1666623146601
+      "id": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
+      "name": "sasha",
+      "description": "sasha description",
+      "board": [
+        {
+          "id": 1,
+          "title": "To Do",
+          "color": "#CECF9C",
+          "list": [
+            {
+              "id": 1,
+              "text": "example card 1",
+              "creationData": 1666371895211,
+              "comments": [
+                {
+                  "id": 1,
+                  "text": "some comment"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "PROGRESS",
+          "color": "#FFCF9C",
+          "list": [
+            {
+              "id": 1,
+              "text": "PROGRESS card 1",
+              "creationData": 1666371895211,
+              "comments": [
+                {
+                  "id": 1,
+                  "text": "some comment"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "DONE",
+          "color": "#31CF63",
+          "list": [
+            {
+              "id": 1,
+              "text": "DONE card 1",
+              "creationData": 1666371895211,
+              "comments": [
+                {
+                  "id": 1,
+                  "text": "some comment"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "creationDate": 1666721401855
     },
     {
-      "id": "aacbb730-69cc-498d-957c-59e136853798",
-      "name": "sdgfgsdg",
-      "description": "sdfgsdfgs",
-      "tasks": [],
-      "creationDate": 1666628677885
-    },
-    {
-      "id": "5598f85f-9271-4795-a943-4c8f45314c82",
-      "name": "sdgfgsdg",
-      "description": "sdfgsdfgs",
-      "tasks": [],
-      "creationDate": 1666628680499
+      "id": "40babe91-971d-448f-a406-0efd6e8b51bd",
+      "name": "sadfasdf",
+      "description": "asdfsad",
+      "board": [],
+      "creationDate": 1666811043745
     }
   ],
   "SingUpUsers": [
@@ -32,6 +80,11 @@
       "email": "nik",
       "password": "nik",
       "id": 2
+    },
+    {
+      "email": "aaa",
+      "password": "aaa",
+      "id": 3
     }
   ]
 }

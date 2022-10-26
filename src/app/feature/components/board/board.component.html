@@ -14,7 +14,7 @@
           class="task"
           cdkDropList
           [cdkDropListData]="column.list"
-          *ngFor="let column of boardService.getBoard$() | async"
+          *ngFor="let column of board.board"
           (cdkDropListDropped)="drop($event)"
         >
           <div class="task-do__top">

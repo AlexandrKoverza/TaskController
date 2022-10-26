@@ -1,4 +1,6 @@
 <main class="wrapper max-width">
+  <app-header></app-header>
   <router-outlet></router-outlet>
-  <app-popup *ngIf="modalService.isVisible$ | async" ></app-popup>
+  <app-footer></app-footer>
+  <app-popup *ngIf="modalService.isVisible$ | async"></app-popup>
 </main>

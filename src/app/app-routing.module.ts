@@ -1,26 +1,50 @@
-import { EditComponent } from './feature/components/edit/edit.component';
-import { ErrorComponent } from './core/components/error/error.component';
+// import { EditComponent } from './feature/components/edit/edit.component';
+import { ErrorComponent } from './feature/components/error/error.component';
 import { BoardsComponent } from './feature/components/boards/boards.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailsComponent } from './feature/components/details/details.component';
-import { LoginComponent } from './core/components/login/login.component';
-import { RegistrationComponent } from './core/components/registration/registration.component';
-import { BoardComponent } from './feature/components/board/board.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'registration', component: RegistrationComponent },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./feature/components/login/login.module').then(
+        (m) => m.LoginModule
+      ),
+  },
+  {
+    path: 'registration',
+    loadChildren: () =>
+      import('./feature/components/registration/registration.module').then(
+        (m) => m.RegistrationModule
+      ),
+  },
+  {
+    path: 'boards/board/details/:id',
+    loadChildren: () =>
+      import('./feature/components/details/details.module').then(
+        (m) => m.DetailsModule
+      ),
+  },
+  {
+    path: 'boards/board/edit/:id',
+    loadChildren: () =>
+      import('./feature/components/edit/edit.module').then((m) => m.EditModule),
+  },
+  {
+    path: 'boards/board/:id',
+    loadChildren: () =>
+      import('./feature/components/board/board.module').then(
+        (m) => m.BoardModule
+      ),
+  },
   { path: 'boards', component: BoardsComponent },
-  { path: 'boards/board/details/:id', component: DetailsComponent },
-  { path: 'boards/board/edit/:id', component: EditComponent },
-  { path: 'boards/board/:id', component: BoardComponent },
-  { path: '', redirectTo: 'registration', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: ErrorComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

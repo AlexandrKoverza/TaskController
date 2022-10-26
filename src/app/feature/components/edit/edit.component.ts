@@ -47,7 +47,7 @@ export class EditComponent implements OnInit {
         name: [board.name, Validators.required],
         description: [board.description, Validators.required],
       });
-      this.board.tasks = board.tasks
+      this.board.board = board.board
       this.board.creationDate = board.creationDate
     });
   }
@@ -58,7 +58,7 @@ export class EditComponent implements OnInit {
         id: this.board.id,
         name: this.form.value.name,
         description: this.form.value.description,
-        tasks: this.board.tasks,
+        board: this.board.board,
         creationDate: this.board.creationDate,
       })
       .subscribe(() => this.router.navigate(['/boards']));

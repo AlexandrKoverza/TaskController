@@ -8,8 +8,6 @@ export class ModalService {
 
   isVisible$ = new BehaviorSubject<boolean>(false)
 
-  constructor() { }
-
   open() {
     this.isVisible$.next(true)
   }
