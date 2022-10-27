@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-comment',
@@ -6,14 +6,11 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
   styleUrls: ['./comment.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CommentComponent implements OnInit {
+export class CommentComponent {
   @Input() comment: any;
   @Output() emitComment: EventEmitter<any> = new EventEmitter()
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   onCommentEmit(comment: any) {
     this.emitComment.emit(comment)

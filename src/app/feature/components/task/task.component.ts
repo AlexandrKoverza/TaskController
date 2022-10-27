@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
-  OnInit,
   EventEmitter,
   Output,
 } from '@angular/core';
@@ -13,18 +12,13 @@ import {
   styleUrls: ['./task.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent {
   @Input() item: any;
-  @Output() emitText: EventEmitter<{ id: number; text: string }> =
-    new EventEmitter();
+  @Output() emitText: EventEmitter<{ id: number; text: string }> = new EventEmitter();
   @Output() emitDeleteItem: EventEmitter<number> = new EventEmitter();
 
   commentInput = '';
   open = false;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   onCommentTextEmit(id: number) {
     this.emitText.emit({id, text: this.commentInput})

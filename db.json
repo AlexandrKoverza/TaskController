@@ -4,7 +4,7 @@
       "id": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
       "name": "sasha",
       "description": "sasha description",
-      "board": [
+      "column": [
         {
           "id": 1,
           "title": "To Do",
@@ -61,13 +61,6 @@
         }
       ],
       "creationDate": 1666721401855
-    },
-    {
-      "id": "40babe91-971d-448f-a406-0efd6e8b51bd",
-      "name": "sadfasdf",
-      "description": "asdfsad",
-      "board": [],
-      "creationDate": 1666811043745
     }
   ],
   "SingUpUsers": [

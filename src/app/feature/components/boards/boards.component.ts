@@ -29,22 +29,6 @@ export class BoardsComponent implements OnInit {
     this.router.navigate(['boards/board', id]);
   }
 
-  sortStartA(board: any) {
-    return board.sort((a: any, b: any) => (a.name > b.name ? -1 : 1));
-  }
-
-  sortStartZ(board: any) {
-    return board.sort((a: any, b: any) => (a.name > b.name ? 1 : -1));
-  }
-
-  sortUp(board: any) {
-    return board.sort((a: any, b: any) => (a.tasks > b.tasks ? -1 : 1));
-  }
-
-  sortDown(board: any) {
-    return board.sort((a: any, b: any) => (a.tasks > b.tasks ? 1 : -1));
-  }
-
   detailsBoard(id: number | string) {
     this.router.navigate(['boards/board/details', id]);
   }
@@ -54,10 +38,26 @@ export class BoardsComponent implements OnInit {
     return this.boardsService.updateItem(board);
   }
 
-  deleteBoard(id: number | string) {
+  deleteBoard(id: any) {
     return this.boardsService.deleteItem(id).subscribe(() => {
-      this.boards = this.boards.filter((item) => item.id !== id);
+      this.boards = this.boards.filter((item) => item.id !== id);      
     });
   }
 
+  //=======================================
+  sortStartA(board: any) {
+    return board.sort((a: any, b: any) => (a.name > b.name ? -1 : 1));
+  }
+
+  sortStartZ(board: any) {
+    return board.sort((a: any, b: any) => (a.name > b.name ? 1 : -1));
+  }
+
+  sortUp(board: any) {
+    return board.sort((a: any, b: any) => (a.column.list > b.column.list ? -1 : 1));
+  }
+
+  sortDown(board: any) {
+    return board.sort((a: any, b: any) => (a.tasks > b.tasks ? 1 : -1));
+  }
 }

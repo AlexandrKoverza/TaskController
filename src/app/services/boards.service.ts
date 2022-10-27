@@ -42,7 +42,7 @@ export class BoardsService {
 
   deleteItem(id: any) {
     const link = `${this.url}/${id}`;
-    return this.http.delete<Board[]>(link, id);
+    return this.http.delete<Board[]>(link, id)
   }
 
   updateItem(board: Board): Observable<Board[]> {

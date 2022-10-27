@@ -1,7 +1,5 @@
-import { BehaviorSubject, map, Observable, of, tap } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { Board } from '../mock-data/boards';
-import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+import { Injectable, Input } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +44,7 @@ export class BoardService {
       ]
     },
     {
-      id: 2,
+      id: 3,
       title: 'Done',
       color: '#31CF63',
       list: [
@@ -76,8 +74,7 @@ export class BoardService {
   board: any[] = this.initBoard;
   board$ = new BehaviorSubject<any[]>(this.initBoard)
 
-  constructor(private http: HttpClient) {    
-  }
+  constructor() {}
 
   getBoard$() {
     return this.board$.asObservable()

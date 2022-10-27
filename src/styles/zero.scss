@@ -19,11 +19,11 @@ body {
     min-height: 100vh;
 }
 .max-width {
-    max-width: $maxWidth + px;
+    max-width: 1920px;
     margin: 0 auto;
 }
 .container {
-    max-width: $maxWidthContainer + px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 0 15px;
 }

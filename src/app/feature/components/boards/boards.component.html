@@ -29,7 +29,7 @@
         </div>
       </div>
       <div *ngIf="boards$ | async as boards">
-        <div *ngFor="let board of boards | searchPipe: searchText, let i = index">
+        <div *ngFor="let board of boards | searchPipe: searchText">
           <div class="board">
             <div class="board-id"><strong>ID: </strong>{{ board.id }}</div>
             <div class="board-block">
@@ -43,7 +43,7 @@
               </div>
               <div class="board-tasks">
                 <span class="board-text">Tasks: </span> <br />
-                <span>{{ board.board.length }}</span>
+                <span>{{ board.column.length }}</span>
               </div>
               <div class="board-creationDate">
                 <span class="board-text">Creation date: </span> <br />
