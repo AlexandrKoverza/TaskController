@@ -53,8 +53,7 @@ export class EditComponent implements OnInit {
   }
 
   saveBoard() {
-    return this.boardsService
-      .updateItem({
+    return this.boardsService.updateItem({
         id: this.board.id,
         name: this.form.value.name,
         description: this.form.value.description,

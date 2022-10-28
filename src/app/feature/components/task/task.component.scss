@@ -13,6 +13,33 @@
   align-items: center;
   margin-left: auto;
 }
+.task-row__top{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.task-row form{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.task-input{
+  height: 28px;
+  border: 1px solid black;
+  padding-left: 5px;
+}
+.task-save{
+  width: 50px;
+  height: 28px;
+  background-color: transparent;
+  border: 1px solid black;
+  margin-left: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .task-img {
   width: 15px;
   height: 15px;

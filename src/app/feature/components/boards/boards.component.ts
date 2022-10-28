@@ -39,9 +39,10 @@ export class BoardsComponent implements OnInit {
   }
 
   deleteBoard(id: any) {
-    return this.boardsService.deleteItem(id).subscribe(() => {
+    this.boardsService.deleteItem(id).subscribe(() => {
       this.boards = this.boards.filter((item) => item.id !== id);      
     });
+    // return this.boards$ = this.boardsService.getBoards()
   }
 
   //=======================================

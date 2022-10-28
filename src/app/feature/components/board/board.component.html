@@ -14,14 +14,13 @@
           *ngFor="let column of this.boardService.getBoard$() | async" (cdkDropListDropped)="drop($event)">
           <div class="task-do__top">
             <span class="task-do__name">{{ column.title }}</span>
-            <div class="task-do__block">
+            <form class="task-do__block">
               <input type="text" class="task-do__input" placeholder="create new task">
               <button class="task-do__button">
                 <img src="../../../../../../assets/plus.svg" alt="image" />
               </button>
-            </div>
+            </form>
           </div>
-
           <div class="task-list">
             <div cdkDrag class="task-item" [ngStyle]="{ background: column.color }" [cdkDragData]="item"
               *ngFor="let item of column.list">
