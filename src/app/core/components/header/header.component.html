@@ -1,11 +1,11 @@
-<header class="header" >
+<header class="header">
   <div class="container">
     <div class="header-inner">
       <span class="header-name">Task Control</span>
-      <div *ngIf="userName">
-        <p>{{userName}}</p>
+      <div *ngIf="userName"class="username-block">
+        <p class="username">{{userName}}</p>
+        <button class="header-button" (click)="exit()">Exit</button>
       </div>
-      <button class="header-button" (click)="exit()">Exit</button>
     </div>
   </div>
 </header>

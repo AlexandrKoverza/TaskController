@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ModalService } from './services/modal.service';
 
@@ -8,13 +9,10 @@ import { ModalService } from './services/modal.service';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent implements OnInit {
-  token$ = new BehaviorSubject(localStorage.getItem('userEmail'))
+export class AppComponent{
+  // token$ = new BehaviorSubject(localStorage.getItem('userEmail'))
 
-  constructor(public modalService: ModalService) {
+  constructor(public modalService: ModalService, private route: ActivatedRoute) {
   }
 
-  ngOnInit() {
-    this.token$.asObservable()
-  }
 }

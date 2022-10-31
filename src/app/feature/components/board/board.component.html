@@ -8,7 +8,6 @@
           Delete board
         </button>
       </div>
-
       <div class="tasks-row" cdkDropListGroup>
         <div class="task" cdkDropList [cdkDropListData]="column.list"
           *ngFor="let column of this.boardService.getBoard$() | async" (cdkDropListDropped)="drop($event)">
@@ -20,6 +19,22 @@
                 <img src="../../../../../../assets/plus.svg" alt="image" />
               </button>
             </form>
+          </div>
+          <div class="controls-block">
+            <div class="sort-block">
+              <button class="sort-button" (click)="sortStartZ(column.list)">
+                a - z
+              </button>
+              <button class="sort-button" (click)="sortStartA(column.list)">
+                z - a
+              </button>
+              <button class="sort-button" (click)="sortUp(column.list)">
+                1 - 9
+              </button>
+              <button class="sort-button" (click)="sortDown(column.list)">
+                9 - 1
+              </button>
+            </div>
           </div>
           <div class="task-list">
             <div cdkDrag class="task-item" [ngStyle]="{ background: column.color }" [cdkDragData]="item"

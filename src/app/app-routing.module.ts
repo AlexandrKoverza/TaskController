@@ -2,6 +2,8 @@ import { ErrorComponent } from './feature/components/error/error.component';
 import { BoardsComponent } from './feature/components/boards/boards.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HeaderComponent } from './core/components/header/header.component';
+import { FooterComponent } from './core/components/footer/footer.component';
 
 const routes: Routes = [
   {
@@ -38,6 +40,8 @@ const routes: Routes = [
       ),
   },
   { path: 'boards', component: BoardsComponent },
+  { path: 'boards', component: HeaderComponent, data: { show: true } },
+  { path: 'boards', component: FooterComponent, data: { show: false } },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: ErrorComponent },
 ];

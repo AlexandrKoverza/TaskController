@@ -1,4 +1,4 @@
-<section class="boards">
+<section class="boards" *ngIf="boards$ | async as boards">
   <div class="container">
     <div class="boards-inner">
       <div class="controls">
@@ -14,21 +14,21 @@
           </button>
           <div class="sort-block">
             <span class="sort-text">board name: </span>
-            <button class="sort-button" (click)="sortStartA(boards$)">
-              z - a
-            </button>
-            <button class="sort-button" (click)="sortStartZ(boards$)">
+            <button class="sort-button" (click)="sortStartZ(boards)">
               a - z
             </button>
+            <button class="sort-button" (click)="sortStartA(boards)">
+              z - a
+            </button>
             <span class="sort-text">tasks:</span>
-            <button class="sort-button" (click)="sortUp(boards$)">9 - 1</button>
-            <button class="sort-button" (click)="sortDown(boards$)">
+            <button class="sort-button" (click)="sortDown(boards)">
               1 - 9
             </button>
+            <button class="sort-button" (click)="sortUp(boards)">9 - 1</button>
           </div>
         </div>
       </div>
-      <div *ngIf="boards$ | async as boards">
+      <div>
         <div *ngFor="let board of boards | searchPipe: searchText">
           <div class="board">
             <div class="board-id"><strong>ID: </strong>{{ board.id }}</div>

@@ -14,6 +14,39 @@ export class BoardService {
         {
           id: 1,
           text: 'example card 1',
+          creationData: 1,
+          comments: [
+            {
+              id: 1,
+              text: 'some comment',
+            },
+          ],
+        },
+        {
+          id: 2,
+          text: 'example card 2',
+          creationData: 2,
+          comments: [
+            {
+              id: 1,
+              text: 'some comment',
+            },
+          ],
+        },
+        {
+          id: 3,
+          text: 'example card 3',
+          creationData: 3,
+          comments: [
+            {
+              id: 1,
+              text: 'some comment',
+            },
+          ],
+        },
+        {
+          id: 4,
+          text: 'example card 4',
           creationData: 1666371895211,
           comments: [
             {
@@ -30,8 +63,41 @@ export class BoardService {
       color: '#FFCF9C',
       list: [
         {
+          id: 1,
+          text: 'example card 1',
+          creationData: 1,
+          comments: [
+            {
+              id: 1,
+              text: 'some comment',
+            },
+          ],
+        },
+        {
           id: 2,
           text: 'example card 2',
+          creationData: 2,
+          comments: [
+            {
+              id: 1,
+              text: 'some comment',
+            },
+          ],
+        },
+        {
+          id: 3,
+          text: 'example card 3',
+          creationData: 3,
+          comments: [
+            {
+              id: 1,
+              text: 'some comment',
+            },
+          ],
+        },
+        {
+          id: 4,
+          text: 'example card 4',
           creationData: 1666371895211,
           comments: [
             {
@@ -48,20 +114,45 @@ export class BoardService {
       color: '#31CF63',
       list: [
         {
-          id: 3,
-          text: 'example card 3',
-          creationData: 1666371895211,
+          id: 1,
+          text: 'example card 1',
+          creationData: 1,
           comments: [
             {
               id: 1,
               text: 'some comment',
             },
+          ],
+        },
+        {
+          id: 2,
+          text: 'example card 2',
+          creationData: 2,
+          comments: [
             {
-              id: 2,
+              id: 1,
               text: 'some comment',
             },
+          ],
+        },
+        {
+          id: 3,
+          text: 'example card 3',
+          creationData: 3,
+          comments: [
             {
-              id: 3,
+              id: 1,
+              text: 'some comment',
+            },
+          ],
+        },
+        {
+          id: 4,
+          text: 'example card 4',
+          creationData: 1666371895211,
+          comments: [
+            {
+              id: 1,
               text: 'some comment',
             },
           ],

@@ -86,4 +86,21 @@ export class BoardComponent implements OnInit {
   onDeleteItem(itemId: number, columnId: number) {
     this.boardService.deleteItem(itemId, columnId);
   }
+
+  sortStartA(list: any) {  
+    return list.sort((a: any, b: any) => (a.text > b.text ? -1 : 1));
+  }
+
+  sortStartZ(list: any) {
+    return list.sort((a: any, b: any) => (a.text > b.text ? 1 : -1));
+  }
+
+  sortUp(list: any) {  
+    return list.sort((a: any, b: any) => (a.text > b.text ? 1 : -1));
+  }
+
+  sortDown(list: any) {
+    return list.sort((a: any, b: any) => (a.text > b.text ? -1 : 1));
+  }
+
 }
