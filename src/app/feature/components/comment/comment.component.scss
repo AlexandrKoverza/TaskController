@@ -1,9 +1,20 @@
-.task-comment__item {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    border: 1px solid black;
-    padding: 5px;
-    margin-top: 5px;
-  }
+.comment-task {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.comment-task__text {
+  display: block;
+  margin-right: 5px;
+}
+
+.comment-task__img {
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+}

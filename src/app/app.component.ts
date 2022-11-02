@@ -1,18 +1,12 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ModalService } from './services/modal.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent{
-  // token$ = new BehaviorSubject(localStorage.getItem('userEmail'))
-
-  constructor(public modalService: ModalService, private route: ActivatedRoute) {
-  }
-
+export class AppComponent {
+  constructor(public modalService: ModalService) {}
 }

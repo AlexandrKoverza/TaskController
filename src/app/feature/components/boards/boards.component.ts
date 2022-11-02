@@ -13,7 +13,7 @@ import { ModalService } from 'src/app/services/modal.service';
 export class BoardsComponent implements OnInit {
   searchText: string = '';
   boards: Board[] = [];
-  boards$: Observable<Board[]> = of([])
+  boards$: Observable<Board[]> = of([]);
 
   constructor(
     private router: Router,
@@ -22,9 +22,8 @@ export class BoardsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.boards$ = this.boardsService.getBoards()
+    this.boards$ = this.boardsService.getBoards();
     console.log();
-    
   }
 
   toBoard(id: number | string) {
@@ -42,12 +41,11 @@ export class BoardsComponent implements OnInit {
 
   deleteBoard(id: any) {
     this.boardsService.deleteItem(id).subscribe(() => {
-      this.boards = this.boards.filter((item) => item.id !== id);      
+      this.boards = this.boards.filter((item) => item.id !== id);
     });
-    // return this.boards$ = this.boardsService.getBoards()
   }
 
-  sortStartA(board: any) {  
+  sortStartA(board: any) {
     return board.sort((a: any, b: any) => (a.name > b.name ? -1 : 1));
   }
 
@@ -56,10 +54,14 @@ export class BoardsComponent implements OnInit {
   }
 
   sortUp(board: any) {
-    return board.sort((a: any, b: any) => (a.column.length > b.column.length ? -1 : 1));
+    return board.sort((a: any, b: any) =>
+      a.column.length > b.column.length ? -1 : 1
+    );
   }
 
   sortDown(board: any) {
-    return board.sort((a: any, b: any) => (a.column.length > b.column.length ? 1 : -1));
+    return board.sort((a: any, b: any) =>
+      a.column.length > b.column.length ? 1 : -1
+    );
   }
 }

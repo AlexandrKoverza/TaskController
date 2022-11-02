@@ -21,7 +21,8 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.board$ = this.activatedRoute.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.boardsService.getBoard(params.get('id')!))
+        this.boardsService.getBoard(params.get('id')!)
+      )
     );
   }
 

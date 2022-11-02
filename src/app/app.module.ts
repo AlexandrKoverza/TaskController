@@ -1,4 +1,3 @@
-// import { FormsModule } from '@angular/forms';
 import { HomeModule } from './feature/home.module';
 import { CoreModule } from './core/core.module';
 import { NgModule } from '@angular/core';

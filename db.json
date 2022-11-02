@@ -2,8 +2,8 @@
   "Boards": [
     {
       "id": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
-      "name": "sasha",
-      "description": "sasha description",
+      "name": "Новая доска",
+      "description": "Новая доска description",
       "column": [
         {
           "id": 1,
@@ -26,7 +26,7 @@
         {
           "id": 2,
           "title": "PROGRESS",
-          "color": "#FFCF9C",
+          "color": "#FDAA3D",
           "list": [
             {
               "id": 1,
@@ -108,23 +108,39 @@
         }
       ],
       "creationDate": 1667249857401
+    },
+    {
+      "id": "92fa2b71-a27f-4dd7-ba76-57230aed397e",
+      "name": "121212",
+      "description": "12121212",
+      "column": [
+        {
+          "id": 1,
+          "title": "To Do",
+          "color": "#CECF9C",
+          "list": []
+        },
+        {
+          "id": 2,
+          "title": "Progress",
+          "color": "#FFCF9C",
+          "list": []
+        },
+        {
+          "id": 3,
+          "title": "Done",
+          "color": "#31CF63",
+          "list": []
+        }
+      ],
+      "creationDate": 1667386793532
     }
   ],
   "SingUpUsers": [
     {
-      "email": "nik",
-      "password": "nik",
+      "email": "test",
+      "password": "test",
       "id": 1
-    },
-    {
-      "email": "nik",
-      "password": "nik",
-      "id": 2
-    },
-    {
-      "email": "aaa",
-      "password": "aaa",
-      "id": 3
     }
   ]
 }

@@ -1,19 +1,24 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommentComponent {
   @Input() comment: any;
-  @Output() emitComment: EventEmitter<any> = new EventEmitter()
+  @Output() emitComment: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
   onCommentEmit(comment: any) {
-    this.emitComment.emit(comment)
+    this.emitComment.emit(comment);
   }
-
 }

@@ -37,28 +37,29 @@ export class PopupComponent implements OnInit {
   }
 
   submit() {
-    this.boardsService.createBoard({
+    this.boardsService
+      .createBoard({
         id: uuid(),
         name: this.form.value.name as string,
         description: this.form.value.description as string,
         column: [
           {
             id: 1,
-            title: "To Do",
-            color: "#CECF9C",
-            list: []
+            title: 'To Do',
+            color: '#CECF9C',
+            list: [],
           },
           {
             id: 2,
-            title: "Progress",
-            color: "#FFCF9C",
-            list: []
+            title: 'Progress',
+            color: '#FFCF9C',
+            list: [],
           },
           {
             id: 3,
-            title: "Done",
-            color: "#31CF63",
-            list: []
+            title: 'Done',
+            color: '#31CF63',
+            list: [],
           },
         ],
         creationDate: Date.now(),

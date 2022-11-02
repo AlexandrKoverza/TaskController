@@ -29,6 +29,10 @@
   &__name {
     font-size: 22px;
     font-weight: bold;
+
+    @media (max-width: 767px) {
+      font-size: 18px;
+    }
   }
 
   &__delete {
@@ -40,26 +44,39 @@
     font-size: 16px;
     cursor: pointer;
     border: 1px solid #bebebe;
+
+    @media (max-width: 767px) {
+      width: 110px;
+    }
   }
 }
 
 .tasks-row {
   margin: 0 auto;
   margin-top: 15px;
-  width: 100%;
+  min-width: 100%;
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
   gap: 15px;
+  overflow-x: scroll;
 }
 
 .task {
-  width: 32%;
+  min-width: 450px;
+
+  @media (max-width: 767px) {
+    min-width: 380px;
+  }
 }
 
 .task-do__top {
   width: 100%;
   padding: 8px;
-  border: 1px solid #bebebe;
+  background-color: #eceef2;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+
   .task-do__button {
     display: flex;
     align-items: center;
@@ -74,17 +91,20 @@
     cursor: pointer;
   }
 }
+
 .task-do__name {
   display: block;
   text-align: center;
   font-weight: bold;
   text-transform: uppercase;
 }
+
 .task-do__block {
   display: flex;
   margin-top: 8px;
   align-items: center;
 }
+
 .task-do__input {
   width: 100%;
   border: 1px solid black;
@@ -92,28 +112,36 @@
   padding-left: 5px;
   border-radius: 5px;
 }
+
 .task-list {
   width: 100%;
-  min-height: 400px;
-  // overflow: hidden;
+  min-height: 90px;
+  max-height: 450px;
+  overflow: hidden;
   overflow-y: scroll;
-  padding: 8px;
-  border: 1px solid #bebebe;
+  padding: 10px;
+  padding-right: 8px;
+  background-color: #eceef2;
   border-top: none;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+
+  @media (max-width: 767px) {
+    max-height: 350px;
+  }
 }
 
 .task-item {
   position: relative;
-  border: 1px solid #bebebe;
   margin-top: 5px;
-  padding: 10px;
+  padding: 7px;
   width: 100%;
-  border-radius: 5px;
-  transition: all 150ms ease;
+  border-radius: 3px;
+  transition: all 50ms ease;
   cursor: grab;
 
   &__name {
-    width: 94%;
+    width: 50px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -127,8 +155,17 @@
   }
 }
 
+.task-do__top .controls-block {
+  margin-top: 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 ::-webkit-scrollbar {
   width: 4px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -138,11 +175,9 @@
   border-radius: 9em;
 }
 
-.sort-block {
+.task-do__top .controls-block .sort-block {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  margin-right: 10px;
 }
 
 .sortBlock {

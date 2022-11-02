@@ -2,24 +2,23 @@
   <div class="container">
     <div class="boards-inner">
       <div class="controls">
-        <input
-          type="text"
-          class="controls-input"
-          [(ngModel)]="searchText"
-          placeholder="Search by Board name..."
-        />
-        <div class="controls-block">
+        <div class="controls-top">
+          <input type="text" class="controls-input" [(ngModel)]="searchText" placeholder="Search by Board name..." />
           <button class="controls-button" (click)="modalService.open()">
             Add board
           </button>
+        </div>
+        <div class="controls-block">
           <div class="sort-block">
-            <span class="sort-text">board name: </span>
+            <span class="sort-text">board: </span>
             <button class="sort-button" (click)="sortStartZ(boards)">
               a - z
             </button>
             <button class="sort-button" (click)="sortStartA(boards)">
               z - a
             </button>
+          </div>
+          <div class="sort-block">
             <span class="sort-text">tasks:</span>
             <button class="sort-button" (click)="sortDown(boards)">
               1 - 9
@@ -54,19 +53,13 @@
                   Go to board
                 </button>
                 <button class="board-button" (click)="detailsBoard(board.id)">
-                  <img
-                    src="../../../../assets/circle-info-solid.svg"
-                    alt="image"
-                  />
+                  <img src="../../../../assets/circle-info-solid.svg" alt="image" />
                 </button>
                 <button class="board-button" (click)="updateBoard(board)">
                   <img src="../../../../assets/pen-solid.svg" alt="image" />
                 </button>
                 <button class="board-button" (click)="deleteBoard(board.id)">
-                  <img
-                    src="../../../../assets/trash-can-regular.svg"
-                    alt="image"
-                  />
+                  <img src="../../../../assets/trash-can-regular.svg" alt="image" />
                 </button>
               </div>
             </div>

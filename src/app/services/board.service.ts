@@ -9,12 +9,13 @@ export class BoardService {
     {
       id: 1,
       title: 'To Do',
-      color: '#CECF9C',
+      color: '#79A7D3',
       list: [
         {
           id: 1,
           text: 'example card 1',
-          creationData: 1,
+          creationData: Date.now(),
+          board_id: 1,
           comments: [
             {
               id: 1,
@@ -26,6 +27,7 @@ export class BoardService {
           id: 2,
           text: 'example card 2',
           creationData: 2,
+          board_id: 1,
           comments: [
             {
               id: 1,
@@ -37,17 +39,7 @@ export class BoardService {
           id: 3,
           text: 'example card 3',
           creationData: 3,
-          comments: [
-            {
-              id: 1,
-              text: 'some comment',
-            },
-          ],
-        },
-        {
-          id: 4,
-          text: 'example card 4',
-          creationData: 1666371895211,
+          board_id: 1,
           comments: [
             {
               id: 1,
@@ -60,12 +52,13 @@ export class BoardService {
     {
       id: 2,
       title: 'In progress',
-      color: '#FFCF9C',
+      color: '#FDDD85',
       list: [
         {
           id: 1,
           text: 'example card 1',
           creationData: 1,
+          board_id: 2,
           comments: [
             {
               id: 1,
@@ -77,9 +70,14 @@ export class BoardService {
           id: 2,
           text: 'example card 2',
           creationData: 2,
+          board_id: 2,
           comments: [
             {
               id: 1,
+              text: 'some comment',
+            },
+            {
+              id: 2,
               text: 'some comment',
             },
           ],
@@ -88,17 +86,7 @@ export class BoardService {
           id: 3,
           text: 'example card 3',
           creationData: 3,
-          comments: [
-            {
-              id: 1,
-              text: 'some comment',
-            },
-          ],
-        },
-        {
-          id: 4,
-          text: 'example card 4',
-          creationData: 1666371895211,
+          board_id: 2,
           comments: [
             {
               id: 1,
@@ -111,12 +99,13 @@ export class BoardService {
     {
       id: 3,
       title: 'Done',
-      color: '#31CF63',
+      color: '#FF8C5D',
       list: [
         {
           id: 1,
           text: 'example card 1',
           creationData: 1,
+          board_id: 3,
           comments: [
             {
               id: 1,
@@ -128,6 +117,7 @@ export class BoardService {
           id: 2,
           text: 'example card 2',
           creationData: 2,
+          board_id: 3,
           comments: [
             {
               id: 1,
@@ -139,17 +129,7 @@ export class BoardService {
           id: 3,
           text: 'example card 3',
           creationData: 3,
-          comments: [
-            {
-              id: 1,
-              text: 'some comment',
-            },
-          ],
-        },
-        {
-          id: 4,
-          text: 'example card 4',
-          creationData: 1666371895211,
+          board_id: 3,
           comments: [
             {
               id: 1,
@@ -170,21 +150,15 @@ export class BoardService {
     return this.board$.asObservable();
   }
 
-  // createCard(columnId: number) {
-  //   this.board = this.board.map((column) => {
-  //     if (column.id === columnId) {
-  //       const newCard = {
-  //         id: 1321,
-  //         text: 'new taska',
-  //         creationData: 23432424234,
-  //         comments: []
-  //       }
-  //       column.list = [...column.list, newCard]
-  //     }
-  //     return column
-  //   })
-  //   this.board$.next([...this.board]);
-  // }
+  createCard(newCard: any, columnId: number) {
+    this.board = this.board.map((column) => {
+      if (column.id === columnId) {
+        column.list = [...column.list, newCard];
+      }
+      return column;
+    });
+    this.board$.next([...this.board]);
+  }
 
   deleteItem(itemId: number, columnId: number) {
     this.board = this.board.map((column) => {
@@ -236,12 +210,13 @@ export class BoardService {
 
   updateCard(item: any) {
     this.board = this.board.map((column) => {
-      if (column.id === item.id) {
-        column.list = [{ ...item, text: item.text }];
+      if (column.id === item.board_id) {
+        column.list.map((i: { text: any }) => {
+          i.text = item.text;
+        });
       }
-      return column
+      return column;
     });
+    this.board$.next([...this.board]);
   }
-
-
 }

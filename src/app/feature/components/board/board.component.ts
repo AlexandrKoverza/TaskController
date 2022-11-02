@@ -35,21 +35,25 @@ export class BoardComponent implements OnInit {
         this.boardsService.getBoard(params.get('id')!)
       )
     );
-    // this.form = this.formBuilder.group({
-    //   // id: 12312313,
-    //   text: [this.form.value.text, Validators.required],
-    //   // creationData: new Date(),
-    //   // comments: []
-    // });
+    this.form = this.formBuilder.group({
+      text: ['', Validators.required],
+    });
   }
 
   back() {
     this.router.navigate(['/boards']);
   }
 
-  // addTask(columnId: number) {
-  //   this.boardService.createCard(columnId)
-  // }
+  addTask(columnId: number) {
+    const newCard = {
+      id: Date.now(),
+      text: this.form.value.text,
+      creationData: Date.now(),
+      board_id: columnId,
+      comments: []
+    }
+    this.boardService.createCard(newCard, columnId)
+  }
 
   deleteBoard(id: number | string) {
     return this.boardsService.deleteItem(id).subscribe(() => {

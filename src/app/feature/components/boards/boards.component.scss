@@ -1,161 +1,248 @@
-// Boards
 .boards {
-    width: 100%;
+  width: 100%;
 }
+
 .boards-inner {
-    padding-top: 15px;
-    padding-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 60px;
 }
+
 .board {
-    width: 100%;
-    border: 1px solid #bebebe;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    transition: all 150ms ease;
-    cursor: pointer;
-}
-.board:hover{
-    box-shadow: 0 0 11px rgba(25, 25, 25, 0.5); 
-}
-.board-id {
-    width: fit-content;
-    background-color: #3b3838;
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
-    cursor: auto;
-    user-select: text;
-}
-.board-block{
-    border-top: 1px dashed #bebebe;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-    padding-top: 10px;
-}
-.board-text{
-    font-weight: bold;
-}
-.board-name {
-    width: 230px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.board-description {
+  width: 100%;
+  border: 1px solid #bebebe;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  transition: all 150ms ease;
+  cursor: pointer;
+
+  @media (max-width: 767px) {
     width: 400px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;  
-    overflow: hidden;
-}
-.board-tasks {
-    width: 100px;
-}
-.board-creationDate {
-    width: 230px;
-}
-.board-buttons{
-    display: flex;
-    align-items: center;
-}
-.board-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 33px;
-    height: 33px;
-    background-color: transparent;
-    border-radius: 50%;
-    color: black;
-    font-size: 14px;
-    transition: all 150ms ease;
-    cursor: pointer;
-    margin-right: 5px;
-    color: black;
-    border: 1px solid #bebebe;
-}
-.goBtn{
-    width: 100px;
-    border-radius: 5px;
-}
-.board-button img{
-    width: 15px;
-}
-.board-button:hover{
-    background-color: #eeeeee;
-}
-.board-button:last-child{
-    margin-right: 0px;
-}
-.controls{
+    margin: 0 auto;
     margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  }
+
+  @media (max-width: 575px) {
+    width: 290px;
+    padding: 10px;
+  }
 }
+
+.board:hover {
+  box-shadow: 0 0 11px rgba(25, 25, 25, 0.5);
+}
+
+.board-id {
+  width: fit-content;
+  background-color: #3b3838;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  cursor: auto;
+  user-select: text;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.board-block {
+  border-top: 1px dashed #bebebe;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 10px;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+}
+
+.board-text {
+  font-weight: bold;
+}
+
+.board-name {
+  width: 230px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.board-description {
+  width: 400px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+.board-tasks {
+  width: 100px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+.board-creationDate {
+  width: 230px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
+.board-buttons {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 767px) {
+    margin-top: 10px;
+  }
+}
+
+.board-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 33px;
+  height: 33px;
+  background-color: transparent;
+  border-radius: 50%;
+  color: black;
+  font-size: 14px;
+  transition: all 150ms ease;
+  cursor: pointer;
+  margin-right: 5px;
+  color: black;
+  border: 1px solid #bebebe;
+}
+
+.goBtn {
+  width: 100px;
+  border-radius: 5px;
+}
+
+.board-button img {
+  width: 15px;
+}
+
+.board-button:hover {
+  background-color: #eeeeee;
+}
+
+.board-button:last-child {
+  margin-right: 0px;
+}
+
+.controls {
+  margin-bottom: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.controls-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
 .controls-input {
-    width: 350px;
-    border: 1px solid #3b3838;
-    height: 28px;
-    color: black;
-    border-radius: 5px;
-    padding-left: 5px;
-}
-.controls-block {
-    display: flex;
-    align-items: center;
-    flex-direction: row-reverse;
-}
-.controls-button {
-    width: 90px;
-    height: 33px;
-    background-color: #3b3838;
-    border-radius: 5px;
-    color: black;
-    font-size: 14px;
-    transition: all 150ms ease;
-    cursor: pointer;
-    margin-right: 5px;
-    color: white;
-}
-.sort-block {
-    display: flex;
-    align-items: center;
+  width: 350px;
+  border: 1px solid #3b3838;
+  height: 33px;
+  color: black;
+  border-radius: 5px;
+  padding-left: 5px;
+
+  @media (max-width: 575px) {
+    width: 100%;
     margin-right: 10px;
+  }
 }
+
+.controls-button {
+  width: 90px;
+  height: 33px;
+  background-color: #3b3838;
+  border-radius: 5px;
+  color: black;
+  font-size: 14px;
+  transition: all 150ms ease;
+  cursor: pointer;
+  color: white;
+
+  @media (max-width: 575px) {
+    width: 130px;
+  }
+}
+
+.controls-block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.sort-block {
+  display: flex;
+  align-items: center;
+}
+
 .sort-text {
-    display: block;
-    text-transform: lowercase;
-    color: #3b3838;
+  display: block;
+  text-transform: lowercase;
+  color: #3b3838;
 }
-.sort-text:last-child{
-    margin-left: 5px;
+
+.sort-text:last-child {
+  margin-left: 5px;
 }
+
 .sort-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 40px;
-    height: 33px;
-    border-radius: 5px;
-    margin-left: 5px;
-    cursor: pointer;
-    transition: all 150ms ease;
-    color: black;
-    border: 1px solid #bebebe;
-    background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 40px;
+  height: 33px;
+  border-radius: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: all 150ms ease;
+  color: black;
+  border: 1px solid #bebebe;
+  background-color: transparent;
 }
+
 .sort-button:nth-child(3) {
-    margin-right: 5px;
-}
-.sort-button:hover{
-    background-color: #eeeeee;
+  margin-right: 5px;
 }
 
-
-
+.sort-button:hover {
+  background-color: #eeeeee;
+}
