@@ -1,0 +1,35 @@
+<div class="board">
+  <div class="board-id"><strong>ID: </strong>{{ board.id }}</div>
+  <div class="board-block">
+    <div class="board-name">
+      <span class="board-text">Board name: </span> <br/>
+      {{ board.name }}
+    </div>
+    <div class="board-description">
+      <span class="board-text">Board description: </span> <br/>
+      {{ board.description }}
+    </div>
+    <div class="board-tasks">
+      <span class="board-text">Tasks: </span> <br/>
+      <span>{{ board.column.length }}</span>
+    </div>
+    <div class="board-creationDate">
+      <span class="board-text">Creation date: </span> <br/>
+      <span>{{ board.creationDate | date: "MM/dd/yy" }}</span>
+    </div>
+    <div class="board-buttons">
+      <button class="board-button goBtn" (click)="toBoard()">
+        Go to board
+      </button>
+      <button class="board-button" (click)="detailsBoard()">
+        <img src="assets/circle-info-solid.svg" alt="image"/>
+      </button>
+      <button class="board-button" (click)="updateBoard()">
+        <img src="assets/pen-solid.svg" alt="image"/>
+      </button>
+      <button class="board-button" (click)="deleteBoard()">
+        <img src="assets/trash-can-regular.svg" alt="image"/>
+      </button>
+    </div>
+  </div>
+</div>

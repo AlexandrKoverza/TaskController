@@ -1,8 +1,8 @@
 {
-  "Boards": [
+  "boards": [
     {
       "id": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
-      "name": "Новая доска",
+      "name": "New Name",
       "description": "Новая доска description",
       "column": [
         {
@@ -136,10 +136,11 @@
       "creationDate": 1667386793532
     }
   ],
-  "SingUpUsers": [
+  "users": [
     {
-      "email": "test",
-      "password": "test",
+      "email": "test@test.com",
+      "password": "$2a$10$As2T91oB13NL3.LjflOvDuozVAbrAkL7WmZbGFzga2vO4kJl8d6K6",
+      "name": "Test",
       "id": 1
     }
   ]

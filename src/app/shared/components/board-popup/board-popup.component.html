@@ -1,0 +1,24 @@
+<form [formGroup]="form" class="popup" (ngSubmit)="submit()">
+  <div class="popup-content">
+    <div class="popup-top">
+      <div class="formTitle">Create board</div>
+      <div class="popup__close" (click)="closePopup()">&times;</div>
+    </div>
+    <div class="popup-control">
+      <input type="text" class="formInput" placeholder="Name..." formControlName="name" />
+      <p class="formError" *ngIf="form.controls['name'].dirty && form.hasError('required', 'name')">
+        Name is not valid
+      </p>
+      <textarea type="text" class="popup-area" placeholder="Description..." formControlName="description"></textarea>
+      <p class="formError" *ngIf="
+          form.controls['description'].dirty &&
+          form.hasError('required', 'description')
+        ">
+        Description is not valid
+      </p>
+      <button [disabled]="!form.valid" class="formButton" type="submit">
+        Add board
+      </button>
+    </div>
+  </div>
+</form>
