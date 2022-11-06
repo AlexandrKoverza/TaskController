@@ -1,0 +1,29 @@
+<section class="formSection">
+  <div class="container">
+    <div class="formInner">
+      <form class="formWrapper" [formGroup]="loginForm">
+        <h2 class="formTitle">Login</h2>
+        <div class="formBlock">
+          <span class="formName">Email</span>
+          <input formControlName="email" type="email" class="formInput" placeholder="Name...">
+          <p class="formError" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required', 'email')">
+            Email is required</p>
+          <p class="formError" *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('email', 'email')">
+            Email is not valid</p>
+        </div>
+        <div class="formBlock">
+          <span class="formName">Password</span>
+          <input formControlName="password" type="password" class="formInput" placeholder="Password...">
+          <p class="formError"
+            *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required', 'password')">Password is not
+            valid</p>
+        </div>
+        <button class="formButton" [disabled]="!loginForm.valid" (click)="login()">Enter</button>
+
+        <p *ngIf="httpError">{{httpError}}</p>
+
+        <p class="formText">Not registered yet? <button (click)="toRegistration()">Registration</button> </p>
+      </form>
+    </div>
+  </div>
+</section>

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ModalService } from './services/modal.service';
+import { ModalService } from './services';
 
 @Component({
   selector: 'app-root',
