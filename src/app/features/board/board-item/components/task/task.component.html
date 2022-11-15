@@ -1,0 +1,35 @@
+<div class="task-row">
+  <div *ngIf="edit">
+    <form [formGroup]="form">
+      <input type="text" placeholder="edit card" class="task-input" formControlName="text" />
+      <button class="task-save" (click)="updateCardText(item)">Save</button>
+    </form>
+  </div>
+  <div *ngIf="!edit" class="task-row__top">
+    <span class="task-item__name">{{ item.text}}</span>
+    <img (click)="onItemDelete(item.id)" src="assets/images/trash-can-regular.svg" alt="image"
+      class="task-img" />
+  </div>
+</div>
+
+<div class="task-row">
+  <span class="task-item__date">{{ item.creationData | date: "MM/dd/yy"}}</span>
+
+  <div class="task-buttons">
+    <img src="assets/images/pen-solid.svg" alt="image" class="task-img" (click)="editCard()" />
+    <div class="task-comment">
+      <span class="task-comment__text">{{ item.comments.length }}</span>
+      <img (click)="open = !open" src="assets/images/comments.svg" alt="image" class="task-img" />
+    </div>
+  </div>
+</div>
+
+<div *ngIf="open" class="task-row task-comments">
+  <div class="comment-block">
+    <input type="text" class="comment-block__input" placeholder="comment..." [(ngModel)]="commentInput" />
+    <button class="comment-block__button" (click)="onCommentTextEmit(item.id)">
+      Send
+    </button>
+  </div>
+  <ng-content></ng-content>
+</div>

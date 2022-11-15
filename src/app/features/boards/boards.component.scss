@@ -1,0 +1,94 @@
+.boards {
+  width: 100%;
+}
+
+.boards-inner {
+  padding-top: 15px;
+  padding-bottom: 60px;
+}
+
+.controls {
+  margin-bottom: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.controls-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.controls-input {
+  width: 350px;
+  border: 1px solid #3b3838;
+  height: 33px;
+  color: black;
+  border-radius: 5px;
+  padding-left: 5px;
+
+  @media (max-width: 575px) {
+    width: 100%;
+    margin-right: 10px;
+  }
+}
+
+.controls-button {
+  width: 90px;
+  height: 33px;
+  background-color: #3b3838;
+  border-radius: 5px;
+  color: black;
+  font-size: 14px;
+  transition: all 150ms ease;
+  cursor: pointer;
+  color: white;
+
+  @media (max-width: 575px) {
+    width: 130px;
+  }
+}
+
+.controls-block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.sort-block {
+  display: flex;
+  align-items: center;
+}
+
+.sort-text {
+  display: block;
+  text-transform: lowercase;
+  color: #3b3838;
+}
+
+.sort-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90px;
+  height: 33px;
+  border-radius: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: all 150ms ease;
+  color: black;
+  border: 1px solid #bebebe;
+  background-color: transparent;
+}
+.sort-button:last-child{
+  width: 50px;
+}
+.sort-button:hover {
+  background-color: #eeeeee;
+}

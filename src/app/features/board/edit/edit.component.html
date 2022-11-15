@@ -1,0 +1,21 @@
+<section class="edit">
+  <div class="container">
+    <div class="edit-inner">
+      <button class="edit-back" (click)="back()">🠘</button>
+      <p class="board-edit__id">Board ID: <span>{{ board.id }}</span></p>
+      <form [formGroup]="form" *ngIf="form">
+        <p class="board-edit__text">Board name:</p>
+        <input type="text" class="formInput" placeholder="Update name..." formControlName="name" />
+        <p class="formError" *ngIf="form.controls['name'].dirty && form.hasError('required', 'name')">Name is not valid
+        </p>
+        <p class="board-edit__text">Board description:</p>
+        <textarea class="popup-area" placeholder="Update description..." formControlName="description"></textarea>
+        <p class="formError" *ngIf="form.controls['description'].dirty && form.hasError('required', 'description')">
+          Description is not valid</p>
+      </form>
+      <p class="board-edit__text">Tasks: {{ board.column.length }}</p>
+      <p class="board-edit__text">Creation date: {{ board.creationDate | date: "d MMMM, y" }}</p>
+      <button class="formButton" [disabled]="!form.valid" (click)="saveBoard()">Save</button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+{
+    "/api/*": "/",
+    "/boards": "/boards",
+    "/boards/:boardId": "/boards/:boardId",
+    "/boards/:boardId/columns": "/boards/:boardId/columns",
+    "/:columns/:columnId": "/boards/:boardId/columns/:columnId",
+    "/boards/:boardId/columns/:columnId/lists": "/boards/:boardId/columns/:columnId/lists",
+    "/boards/:boardId/columns/:columnId/lists/:listId": "/boards/:boardId/columns/:columnId/lists/:listId",
+    "/boards/:boardId/columns/:columnId/lists/:listId/comments": "/boards/:boardId/columns/:columnId/lists/:listId/comments",
+    "/boards/:boardId/columns/:columnId/lists/:listId/comments/:commentId": "/boards/:boardId/columns/:columnId/lists/:listId/comments/:commentId"
+}

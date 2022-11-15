@@ -1,0 +1,49 @@
+{
+  "boards": [
+    {
+      "id": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
+      "userId": 1,
+      "name": "First board",
+      "description": "First board description",
+      "creationDate": 1666721401855
+    }
+  ],
+  "columns": [
+    {
+      "columnId": "1",
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
+      "title": "To Do",
+      "color": "#CECF9C"
+    }
+  ],
+  "lists": [
+    {
+      "listId": "1",
+      "columnId": "1",
+      "text": "TODO card 1",
+      "creationData": 1666371895211
+    }
+  ],
+  "comments": [
+    {
+      "commentId": "1",
+      "listId": "1",
+      "text": "some comment"
+    }
+  ],
+
+  "users": [
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$As2T91oB13NL3.LjflOvDuozVAbrAkL7WmZbGFzga2vO4kJl8d6K6",
+      "name": "Test",
+      "userId": 1
+    },
+    {
+      "email": "Sasha@gmail.com",
+      "password": "$2a$10$sMo7PSXh.fC0khXg10CMTuLwJXzv.6.D73h4NQarCZYFTb4Z3wHtm",
+      "name": "Sasha",
+      "userId": 2
+    }
+  ]
+}

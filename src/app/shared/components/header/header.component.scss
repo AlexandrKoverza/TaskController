@@ -1,0 +1,44 @@
+.header {
+  width: 100%;
+  border-bottom: 1px solid #3b3838;
+}
+
+.header-inner {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.username-block {
+  display: flex;
+  align-items: center;
+}
+
+.username {
+  font-size: 20px;
+  display: block;
+  margin-right: 20px;
+}
+
+.header-button {
+  width: 100px;
+  height: 33px;
+  background-color: transparent;
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+  transition: all 150ms ease;
+  cursor: pointer;
+}
+
+.header-button:hover {
+  background-color: #eeeeee;
+}

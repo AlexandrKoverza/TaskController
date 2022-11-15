@@ -1,0 +1,85 @@
+.formSection {
+  width: 100%;
+}
+
+.formInner {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 450px;
+  padding: 15px;
+  border: 1px solid #3b3838;
+  margin: 0 auto;
+  border-radius: 5px;
+
+  @media (max-width: 575px) {
+    width: 100%;
+  }
+}
+
+.formTitle {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.formBlock {
+  margin-top: 8px;
+}
+
+.formInput {
+  width: 100%;
+  height: 28px;
+  background-color: transparent;
+  border: 1px solid #3b3838;
+  border-radius: 5px;
+  color: black;
+  font-size: 14px;
+  padding-left: 5px;
+  margin-top: 3px;
+}
+
+.formInput::placeholder {
+  color: #bebebe;
+  font-size: 14px;
+}
+
+.formButton {
+  width: 120px;
+  height: 33px;
+  background-color: transparent;
+  border: 1px solid #bebebe;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+  transition: all 150ms ease;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 8px;
+}
+
+.formButton:hover {
+  background-color: #eeeeee;
+}
+
+.formText {
+  margin-top: 15px;
+}
+
+.formText button {
+  background-color: transparent;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.formError {
+  font-size: 14px;
+  color: red;
+}
