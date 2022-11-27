@@ -6,6 +6,7 @@ export interface BoardBase {
 }
 
 export interface Board extends BoardBase {
+type: any;
   id: string;
   column: BoardColumn[];
   creationDate: number;

@@ -7,7 +7,8 @@ import {
   OnInit,
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BoardService } from 'src/app/services/board.service';
+import { EMPTY, Observable } from 'rxjs';
+import { BoardsService } from 'src/app/services';
 
 @Component({
   selector: 'app-task',
@@ -20,26 +21,29 @@ export class TaskComponent implements OnInit {
   @Output() emitText: EventEmitter<{ id: number; text: string }> =
     new EventEmitter();
   @Output() emitDeleteItem: EventEmitter<number> = new EventEmitter();
-  form: any;
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private boardService: BoardService
-  ) {}
-
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      id: this.item.id,
-      text: [this.item.text, Validators.required],
-      creationData: this.item.creationData,
-      comments: [...this.item.comments],
-      board_id: this.item.board_id,
-    });
-  }
-
+  comment = this.formBuilder.group({
+    text: ['', Validators.required],
+  });
+  form = this.formBuilder.group({
+    description: ['', Validators.required],
+  });
   commentInput = '';
   open = false;
   edit = false;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private boardsService: BoardsService,
+  ) {}
+
+  ngOnInit() {
+    this.comment = this.formBuilder.group({
+      text: [this.item.text, Validators.required],
+    });
+    this.form = this.formBuilder.group({
+      description: [this.item.description, Validators.required],
+    });
+  }
 
   onCommentTextEmit(id: number) {
     this.emitText.emit({ id, text: this.commentInput });
@@ -50,18 +54,25 @@ export class TaskComponent implements OnInit {
     this.emitDeleteItem.emit(id);
   }
 
+  onAddComment(taskId: number | string, boardId: number | string) {
+    this.boardsService.createComment({
+      id: Date.now(),
+      text: this.comment.value.text as string,
+      boardId: boardId as string,
+      taskId: taskId as string
+    }).subscribe();
+  }
+
   editCard() {
     this.edit = !this.edit;
   }
 
-  updateCardText(item: any) {
-    this.boardService.updateCard({
-      id: item.id,
-      text: this.form.value.text,
-      creationData: item.creationData,
-      comments: [...item.comments],
-      board_id: item.board_id,
-    });
-    this.edit = false;
+  updateTaskDescription(item: any) {
+    this.boardsService.updateTask({
+      ...item,
+      description: this.form.value.description,
+    }).subscribe(() => {
+      this.edit = false;
+    })
   }
 }

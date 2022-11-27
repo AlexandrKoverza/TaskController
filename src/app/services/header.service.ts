@@ -8,6 +8,4 @@ export class HeaderService {
 
   headerVisible = false
 
-  constructor() { }
-
 }

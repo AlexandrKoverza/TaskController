@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Board, BoardBase } from '../models';
-import { boardColumns } from '../constants/board-columns';
+import { Board } from '../models';
 
 const options = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -17,29 +16,58 @@ export class BoardsService {
 
   constructor(private http: HttpClient) {}
 
-  getBoard(id: string): Observable<Board> {
-    return this.http.get<Board>(`${ this.url }/${ id }`)
+  //boards
+  getBoard(id: string): Observable<any> {
+    return this.http.get<Board>(`${ this.url }/${ id }?_embed=tasks&_embed=comments`)
   }
 
-  getBoards(): Observable<Board[]> {
-    return this.http.get<Board[]>(this.url)
+  getBoards(): Observable<any[]> {
+    return this.http.get<any[]>(this.url)
   }
 
-  createBoard(board: any): Observable<Board> {
+  createBoard(board: any): Observable<any> {
     const newBoard = {
       ...board,
-      boardColumns,
-      creationDate: Date.now(),
     }
 
     return this.http.post<Board>(this.url, newBoard);
   }
 
-  deleteBoard(id: any) {
-    return this.http.delete<Board[]>(`${ this.url }/${ id }`, id);
+  updateBoard(board: Partial<any>): Observable<any[]> {
+    return this.http.patch<any[]>(`${ this.url }/${ board.id }`, board, options);
   }
 
-  updateBoard(board: Partial<Board>): Observable<Board[]> {
-    return this.http.patch<Board[]>(`${ this.url }/${ board.id }`, board, options);
+  deleteBoard(id: any) {
+    return this.http.delete<any[]>(`${ this.url }/${ id }`, id);
   }
+
+  //tasks
+  createTask(task: any): Observable<any> {
+    const newTask = {
+      ...task
+    }
+
+    return this.http.post<any>(`http://localhost:3000/tasks/`, newTask);
+  }
+
+  updateTask(task: any): Observable<any[]> {
+    return this.http.patch<any[]>(`http://localhost:3000/tasks/${task.id}`, task, options);
+  }
+
+  deleteTask(taskId: any) {
+    return this.http.delete<any[]>(`http://localhost:3000/tasks/${taskId}`, taskId);
+  }
+
+  createComment(comment: any) {
+    const newComment = {
+      ...comment,
+    }
+
+    return this.http.post<any>(`http://localhost:3000/comments/`, newComment);
+  }
+
+  deleteComment(commentId: any) {
+    return this.http.delete<any[]>(`http://localhost:3000/comments/${commentId}`, commentId);
+  }
+
 }

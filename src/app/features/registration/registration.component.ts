@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   registration() {
-    this.authService.registration(this.signUpForm.value).pipe(
+    return this.authService.registration(this.signUpForm.value).pipe(
       take(1),
       catchError((e: HttpErrorResponse) => {
         this.signUpForm.reset();

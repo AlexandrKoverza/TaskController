@@ -35,16 +35,16 @@ export class BoardsComponent {
   }
 
   deleteBoard(id: string) {
-    this.boardsService.deleteBoard(id).pipe(take(1)).subscribe(() => {
+    return this.boardsService.deleteBoard(id).pipe(take(1)).subscribe(() => {
       this.boardsService.getBoards()
     });
   }
 
   changeName() {
-    this.filterName = !this.filterName
+    return this.filterName = !this.filterName;
   }
 
   changeTasks() {
-    this.filterTasks = !this.filterTasks
+    return this.filterTasks = !this.filterTasks
   }
 }

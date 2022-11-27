@@ -13,4 +13,9 @@ describe('HeaderService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('headerVisible should be false', () => {
+    service = TestBed.inject(HeaderService);
+    expect(service.headerVisible).toBeFalse();
+  });
 });

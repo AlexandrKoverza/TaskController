@@ -4,140 +4,65 @@
       "id": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
       "name": "First board",
       "description": "First board description",
-      "column": [
-        {
-          "id": 1,
-          "title": "To Do",
-          "color": "#CECF9C",
-          "list": [
-            {
-              "id": 1,
-              "text": "TODO card 1",
-              "creationData": 1666371895211,
-              "comments": [
-                {
-                  "id": 1,
-                  "text": "some comment"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "title": "in PROGRESS",
-          "color": "#FDAA3D",
-          "list": [
-            {
-              "id": 1,
-              "text": "PROGRESS card 1",
-              "creationData": 1666371895211,
-              "comments": [
-                {
-                  "id": 1,
-                  "text": "some comment"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": 3,
-          "title": "DONE",
-          "color": "#31CF63",
-          "list": [
-            {
-              "id": 1,
-              "text": "DONE card 1",
-              "creationData": 1666371895211,
-              "comments": [
-                {
-                  "id": 1,
-                  "text": "some comment"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "creationDate": 1666721401855,
-      "comments": []
+      "creationDate": 23425325
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "description": "to do 1",
+      "color": "#CECF9C",
+      "type": "toDo",
+      "creationDate": 213414141241,
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
     },
     {
-      "id": "5e66abc4-0e3e-427c-b315-6d6afd19f40e",
-      "name": "Second board",
-      "description": "Second board description",
-      "column": [
-        {
-          "id": 1,
-          "title": "To Do",
-          "color": "#CECF9C",
-          "list": [
-            {
-              "id": 1,
-              "text": "TODO card 2",
-              "creationData": 1666371895211,
-              "comments": [
-                {
-                  "id": 1,
-                  "text": "some comment"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "title": "PROGRESS",
-          "color": "#FDAA3D",
-          "list": [
-            {
-              "id": 1,
-              "text": "PROGRESS card 2",
-              "creationData": 1666371895211,
-              "comments": [
-                {
-                  "id": 1,
-                  "text": "some comment"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": 3,
-          "title": "DONE",
-          "color": "#31CF63",
-          "list": [
-            {
-              "id": 1,
-              "text": "DONE card 2",
-              "creationData": 1666371895211,
-              "comments": [
-                {
-                  "id": 1,
-                  "text": "some comment"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "creationDate": 1667249849405
+      "id": 2,
+      "description": "inProgress 1",
+      "color": "#FDAA3D",
+      "type": "inProgress",
+      "creationDate": 213414141241,
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
+    },
+    {
+      "id": 3,
+      "description": "done 1",
+      "color": "#31CF63",
+      "type": "done",
+      "creationDate": 213414141241,
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "text": "comment 1",
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
+      "taskId": 1
+    },
+    {
+      "id": 1,
+      "text": "comment 2",
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
+      "taskId": 1
+    },
+    {
+      "id": 1,
+      "text": "comment 3",
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
+      "taskId": 1
     }
   ],
   "users": [
     {
       "email": "test@test.com",
       "password": "$2a$10$As2T91oB13NL3.LjflOvDuozVAbrAkL7WmZbGFzga2vO4kJl8d6K6",
-      "name": "Test",
-      "id": 1
+      "name": "Test"
     },
     {
       "email": "Sasha@gmail.com",
       "password": "$2a$10$sMo7PSXh.fC0khXg10CMTuLwJXzv.6.D73h4NQarCZYFTb4Z3wHtm",
-      "name": "Sasha",
-      "id": 2
+      "name": "Sasha"
     }
   ]
 }

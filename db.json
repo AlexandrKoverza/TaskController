@@ -2,48 +2,69 @@
   "boards": [
     {
       "id": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
-      "userId": 1,
       "name": "First board",
       "description": "First board description",
-      "creationDate": 1666721401855
+      "creationDate": 1669574819554
+    },
+    {
+      "id": "1669575216142",
+      "name": "Second board",
+      "description": "Second board description",
+      "creationDate": 1669575216142
     }
   ],
-  "columns": [
+  "tasks": [
     {
-      "columnId": "1",
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
-      "title": "To Do",
-      "color": "#CECF9C"
-    }
-  ],
-  "lists": [
+      "id": 1,
+      "description": "234234234",
+      "color": "#CECF9C",
+      "type": "toDo",
+      "creationDate": 1669574819554,
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
+    },
     {
-      "listId": "1",
-      "columnId": "1",
-      "text": "TODO card 1",
-      "creationData": 1666371895211
+      "id": 3,
+      "description": "123123123",
+      "color": "#31CF63",
+      "type": "done",
+      "creationDate": 1669574819554,
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
+    },
+    {
+      "id": 1669579130121,
+      "description": "afasdfasf",
+      "color": "#CECF9C",
+      "type": "toDo",
+      "creationDate": 1669579130121,
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
+    },
+    {
+      "id": 1669579172292,
+      "description": "",
+      "color": "#FDAA3D",
+      "type": "inProgress",
+      "creationDate": 1669579172292,
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
     }
   ],
   "comments": [
     {
-      "commentId": "1",
-      "listId": "1",
-      "text": "some comment"
+      "id": 1669579161057,
+      "text": "1",
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
+      "taskId": 1
     }
   ],
-
   "users": [
     {
       "email": "test@test.com",
       "password": "$2a$10$As2T91oB13NL3.LjflOvDuozVAbrAkL7WmZbGFzga2vO4kJl8d6K6",
-      "name": "Test",
-      "userId": 1
+      "name": "Test"
     },
     {
       "email": "Sasha@gmail.com",
       "password": "$2a$10$sMo7PSXh.fC0khXg10CMTuLwJXzv.6.D73h4NQarCZYFTb4Z3wHtm",
-      "name": "Sasha",
-      "userId": 2
+      "name": "Sasha"
     }
   ]
 }

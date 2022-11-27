@@ -30,7 +30,7 @@ export class EditComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.board = this.activatedRoute.params
       .pipe(
         switchMap((params: Params) => {
@@ -43,7 +43,6 @@ export class EditComponent implements OnInit {
           name: [board.name, Validators.required],
           description: [board.description, Validators.required],
         });
-        this.board.column = board.column;
         this.board.creationDate = board.creationDate;
       });
   }

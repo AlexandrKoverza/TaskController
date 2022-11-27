@@ -16,8 +16,6 @@ export class CommentComponent {
   @Input() comment: any;
   @Output() emitComment: EventEmitter<any> = new EventEmitter();
 
-  constructor() {}
-
   onCommentEmit(comment: any) {
     this.emitComment.emit(comment);
   }

@@ -13,7 +13,7 @@
         <p class="formError" *ngIf="form.controls['description'].dirty && form.hasError('required', 'description')">
           Description is not valid</p>
       </form>
-      <p class="board-edit__text">Tasks: {{ board.column.length }}</p>
+      <p class="board-edit__text">Tasks: {{ board.column }}</p>
       <p class="board-edit__text">Creation date: {{ board.creationDate | date: "d MMMM, y" }}</p>
       <button class="formButton" [disabled]="!form.valid" (click)="saveBoard()">Save</button>
     </div>

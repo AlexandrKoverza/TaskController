@@ -2,21 +2,18 @@ import { BoardColumn } from '../models/board-column';
 
 export const boardColumns: BoardColumn[] = [
   {
-    id: 1,
     title: 'toDo',
     color: '#CECF9C',
-    list: [],
+    type: 'toDo',
   },
   {
-    id: 2,
     title: 'inProgress',
-    color: '#FFCF9C',
-    list: [],
+    color: '#FDAA3D',
+    type: 'inProgress',
   },
   {
-    id: 3,
     title: 'done',
     color: '#31CF63',
-    list: [],
+    type: 'done',
   },
 ];

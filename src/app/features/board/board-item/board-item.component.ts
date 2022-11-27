@@ -8,8 +8,8 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Board } from '../../../models';
-import { HttpClient } from '@angular/common/http';
+import { boardColumns } from 'src/app/constants/board-columns';
+import { BoardColumn } from 'src/app/models/board-column';
 
 @Component({
   selector: 'app-board-item',
@@ -17,16 +17,21 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./board-item.component.scss'],
 })
 export class BoardItemComponent implements OnInit {
-  boards: Board[] = [];
-  board$: Observable<Board> = EMPTY;
-  form!: FormGroup;
+  boards: any[] = [];
+  board$: Observable<any> = EMPTY;
+  tasks: any[] = [];
+  comments: any[] = [];
+  boardColumns: BoardColumn[] = [...boardColumns];
+
+  form = this.formBuilder.group({
+    description: ['', Validators.required],
+  });
 
   constructor(
     private boardsService: BoardsService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder,
-    private http: HttpClient
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -35,28 +40,10 @@ export class BoardItemComponent implements OnInit {
         this.boardsService.getBoard(params.get('id')!)
       )
     );
-    this.form = this.formBuilder.group({
-      text: ['', Validators.required],
-    });
   }
 
   back() {
     this.router.navigate(['/']);
-  }
-
-  addTask(boardId: any, columnId: any) {
-    const newCard = {
-      id: Date.now(),
-      text: this.form.value.text,
-      creationData: Date.now(),
-      comments: [],
-    };
-
-    const link = `http://localhost:3000/boards/${boardId}`;
-
-
-    // todo: call updateBoard method from boardsService or think about logic
-    // this.boardService.createCard(newCard, columnId)
   }
 
   deleteBoard(id: number | string) {
@@ -66,7 +53,7 @@ export class BoardItemComponent implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -83,19 +70,27 @@ export class BoardItemComponent implements OnInit {
     }
   }
 
-  onAddComment(event: { id: number; text: string }, columnId: number) {
-    // todo: call updateBoard method from boardsService
-    // this.boardService.addComment(columnId, event.id, event.text);
+  addTask(type: string, color: string, boardId: number | string) {
+    this.boardsService
+      .createTask({
+        id: Date.now(),
+        description: this.form.value.description as string,
+        color: color as string,
+        type: type as string,
+        creationDate: Date.now(),
+        boardId: boardId as string,
+      }).subscribe();
   }
 
-  onDeleteComment(comment: any, columnId: any, item: any) {
-    // todo: call updateBoard method from boardsService
-    // this.boardService.deleteComment(columnId, item.id, comment.id);
+  onDeleteTask(itemId: number | string) {
+    this.boardsService.deleteTask(itemId).subscribe(() => {
+      this.tasks = this.tasks.filter((item) => item.id !== itemId);
+    });
   }
 
-  onDeleteItem(itemId: number, columnId: number) {
-    // todo: call updateBoard method from boardsService
-    // this.boardService.deleteItem(itemId, columnId);
+  onDeleteComment(commentId: number | string) {
+    return this.boardsService.deleteComment(commentId).subscribe(() => {
+      this.comments = this.comments.filter((item) => item.id !== commentId);
+    });
   }
-
 }
