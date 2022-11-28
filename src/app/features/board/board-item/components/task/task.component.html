@@ -19,7 +19,6 @@
     <div class="task-buttons">
       <img src="assets/images/pen-solid.svg" alt="image" class="task-img" (click)="editCard()" />
       <div class="task-comment" >
-        <!-- <span class="task-comment__text">{{ item.comments.length }}</span> -->
         <img (click)="open = !open" src="assets/images/comments.svg" alt="image" class="task-img" />
       </div>
     </div>
@@ -28,8 +27,8 @@
   <div *ngIf="open" class="task-row task-comments">
     <div class="comment-block">
       <form [formGroup]="comment" (ngSubmit)="onAddComment(item.id, item.boardId)">
-        <input type="text" class="comment-block__input" placeholder="comment..." formControlName="text" />
-        <button class="comment-block__button" (click)="onCommentTextEmit(item.id)">
+        <input type="text" class="comment-block__input" placeholder="comment..." formControlName="text" [(ngModel)]="commentInput" />
+        <button class="comment-block__button">
           Send
         </button>
       </form>

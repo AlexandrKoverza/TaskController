@@ -58,6 +58,7 @@ export class BoardsService {
     return this.http.delete<any[]>(`http://localhost:3000/tasks/${taskId}`, taskId);
   }
 
+  //comments
   createComment(comment: any) {
     const newComment = {
       ...comment,

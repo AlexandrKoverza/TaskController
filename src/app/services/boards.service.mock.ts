@@ -27,7 +27,7 @@ export class BoardsServiceMock {
   }
 
   deleteBoard(id: any) {
-    return of(boardsMock[1])
+    return of(boardsMock[0])
   }
 
   updateBoard(board: Partial<any>): Observable<any> {

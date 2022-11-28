@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { EMPTY, Observable, switchMap } from 'rxjs';
 import { BoardsService } from 'src/app/services/boards.service';
@@ -7,7 +7,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { boardColumns } from 'src/app/constants/board-columns';
 import { BoardColumn } from 'src/app/models/board-column';
 
@@ -22,7 +22,7 @@ export class BoardItemComponent implements OnInit {
   tasks: any[] = [];
   comments: any[] = [];
   boardColumns: BoardColumn[] = [...boardColumns];
-
+    
   form = this.formBuilder.group({
     description: ['', Validators.required],
   });
@@ -70,7 +70,7 @@ export class BoardItemComponent implements OnInit {
     }
   }
 
-  addTask(type: string, color: string, boardId: number | string) {
+  addTask(type: string, color: string, boardId: any, column: any) {
     this.boardsService
       .createTask({
         id: Date.now(),

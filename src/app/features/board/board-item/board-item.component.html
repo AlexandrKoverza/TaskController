@@ -13,8 +13,8 @@
           [cdkDropListData]="board.tasks">
           <div class="task-do__top">
             <span class="task-do__name">{{ column.type }}</span>
-            <form class="task-do__block" [formGroup]="form" (ngSubmit)="addTask(column.type, column.color, board.id)">
-              <input type="text" class="task-do__input" placeholder="create new task" formControlName="description" />
+            <form class="task-do__block" [formGroup]="form" (ngSubmit)="addTask(column.type, column.color, board.id, column)">
+              <input type="text" class="task-do__input" placeholder="create new task" formControlName="description"/>
               <button class="task-do__button">
                 <img src="assets/images/plus.svg" alt="image" />
               </button>

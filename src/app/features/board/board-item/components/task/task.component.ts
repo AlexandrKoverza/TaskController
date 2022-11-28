@@ -18,7 +18,7 @@ import { BoardsService } from 'src/app/services';
 })
 export class TaskComponent implements OnInit {
   @Input() item: any;
-  @Output() emitText: EventEmitter<{ id: number; text: string }> =
+  @Output() emitText: EventEmitter<{ taskId: number | string; text: number | string }> =
     new EventEmitter();
   @Output() emitDeleteItem: EventEmitter<number> = new EventEmitter();
   comment = this.formBuilder.group({
@@ -45,11 +45,6 @@ export class TaskComponent implements OnInit {
     });
   }
 
-  onCommentTextEmit(id: number) {
-    this.emitText.emit({ id, text: this.commentInput });
-    this.commentInput = '';
-  }
-
   onItemDelete(id: number) {
     this.emitDeleteItem.emit(id);
   }
@@ -61,6 +56,8 @@ export class TaskComponent implements OnInit {
       boardId: boardId as string,
       taskId: taskId as string
     }).subscribe();
+    this.emitText.emit({ taskId, text: this.commentInput });
+    this.commentInput = '';
   }
 
   editCard() {

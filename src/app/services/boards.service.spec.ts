@@ -10,6 +10,9 @@ import {
 } from '@angular/common/http/testing';
 import { BoardsService } from './boards.service';
 import { boardsMock } from 'src/mocks/boards-mock';
+import { tasksMock } from 'src/mocks/tasks-mock';
+import { commentsMock } from 'src/mocks/comments-mock';
+
 
 describe('BoardsService', () => {
   let service: BoardsService;
@@ -26,12 +29,49 @@ describe('BoardsService', () => {
     service = TestBed.inject(BoardsService);
   });
 
+  afterEach(() => {
+    httpTestingController.verify();
+  });
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  afterEach(() => {
-    httpTestingController.verify();
+  //boards
+  describe('getBoard', () => {
+    it('should get board', () => {
+      const id = 'd8568642-6dbd-4135-a1ba-0ebd9f1f9a54';
+      const url = `http://localhost:3000/boards/${id}?_embed=tasks&_embed=comments`;
+
+      service.getBoard(id).subscribe({
+        next: (board) =>
+          expect(board)
+            .withContext('should return the board')
+            .toEqual(boardsMock[0]),
+        error: fail,
+      });
+
+      const req = httpTestingController.expectOne(url);
+      expect(req.request.method).toEqual('GET');
+
+      req.flush(boardsMock[0]);
+    });
+
+    it('should get board with requested board id', () => {
+      const id = 'd8568642-6dbd-4135-a1ba-0ebd9f1f9a55';
+      const url = `http://localhost:3000/boards/${id}?_embed=tasks&_embed=comments`;
+
+      service.getBoard(id).subscribe({
+        next: (board) =>
+          expect(board.id).withContext('should return the board').toEqual(id),
+        error: fail,
+      });
+
+      const req = httpTestingController.expectOne(url);
+      expect(req.request.method).toEqual('GET');
+
+      req.flush(boardsMock[0]);
+    });
   });
 
   describe('getBoards', () => {
@@ -64,77 +104,44 @@ describe('BoardsService', () => {
     });
   });
 
-  describe('getBoard', () => {
-
-    it('should get board', () => {
-      const id = 'd8568642-6dbd-4135-a1ba-0ebd9f1f9a54';
-      const url = `http://localhost:3000/boards/${id}`;
-
-      service.getBoard(id).subscribe({
-        next: (board) =>
-          expect(board)
-            .withContext('should return the board')
-            .toEqual(boardsMock[0]),
-        error: fail,
-      });
-
-      const req = httpTestingController.expectOne(url);
-      expect(req.request.method).toEqual('GET');
-
-      req.flush(boardsMock[0]);
+  describe('createBoard', () => {
+    beforeEach(() => {
+      service = TestBed.inject(BoardsService);
     });
 
-    it('should get board with requested board id', () => {
-      const id = 'd8568642-6dbd-4135-a1ba-0ebd9f1f9a54';
-      const url = `http://localhost:3000/boards/${id}`;
+    it('should create board', () => {
+      const url = `http://localhost:3000/boards`;
 
-      service.getBoard(id).subscribe({
-        next: (board) =>
-          expect(board.id).withContext('should return the board').toEqual(id),
+      const board = {
+        id: 'd8568642-6dbd-4135-a1ba-0ebd9f1f9a55',
+        userId: 1,
+        name: 'second board',
+        description: 'second board description',
+        creationDate: 1666721401856,
+      };
+
+      service.createBoard(board).subscribe({
+        next: (data) => expect(data).toEqual(boardsMock),
         error: fail,
       });
 
       const req = httpTestingController.expectOne(url);
-      expect(req.request.method).toEqual('GET');
-
-      req.flush(boardsMock[0]);
+      expect(req.request.method).toEqual('POST');
+      expect(req.request.body).toEqual(board);
     });
   });
-
-  // describe('deleteBoard', () => {
-
-  //   const id = 'd8568642-6dbd-4135-a1ba-0ebd9f1f9a54';
-  //   const url = `http://localhost:3000/boards/${id}`;
-    
-
-  //   it('deleteBoard', () => {
-
-  //     service.deleteBoard(id).subscribe({
-  //       next: board => expect(board.id)
-  //         .withContext('should return the board')
-  //         .toEqual(boardsMock[0].id),
-  //       error: fail
-  //     });
-
-  //     const req = httpTestingController.expectOne(url);
-  //     expect(req.request.method).toEqual('DELETE');
-
-  //     req.flush(boardsMock[0]);
-  //   });
-  // });
 
   describe('updateBoard', () => {
     beforeEach(() => {
       service = TestBed.inject(BoardsService);
     });
 
-    it('should patch board', () => {
+    it('should update board', () => {
       const id = 'd8568642-6dbd-4135-a1ba-0ebd9f1f9a54';
       const url = `http://localhost:3000/boards/${id}`;
 
       const board = {
         id: 'd8568642-6dbd-4135-a1ba-0ebd9f1f9a54',
-        userId: 1,
         name: 'First board',
         description: 'First board description',
         creationDate: 1666721401855,
@@ -157,4 +164,141 @@ describe('BoardsService', () => {
       req.event(response);
     });
   });
+
+  describe('deleteBoard', () => {
+    it('should delete board', () => {
+      const id = 'd8568642-6dbd-4135-a1ba-0ebd9f1f9a54';
+      const url = `http://localhost:3000/boards/${id}`;
+
+      service.deleteBoard(id).subscribe({
+        next: (board) => expect(board).toBeTruthy(),
+        error: fail,
+      });
+
+      const req = httpTestingController.expectOne(url);
+      expect(req.request.method).toEqual('DELETE');
+
+      req.flush(boardsMock);
+    });
+  });
+
+  //tasks
+  describe('createTask', () => {
+    beforeEach(() => {
+      service = TestBed.inject(BoardsService);
+    });
+
+    it('should create task', () => {
+      const url = `http://localhost:3000/tasks/`;
+
+      const task =     {
+        id: 1669634064189,
+        description: "third",
+        color: "#FDAA3D",
+        type: "done",
+        creationDate: 1669634064187,
+        boardId: "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
+    };
+
+      service.createTask(task).subscribe({
+        next: (data) => expect(data).toEqual(tasksMock),
+        error: fail,
+      });
+
+      const req = httpTestingController.expectOne(url);
+      expect(req.request.method).toEqual('POST');
+      expect(req.request.body).toEqual(task);
+    });
+  });
+
+  describe('updateTask', () => {
+    beforeEach(() => {
+      service = TestBed.inject(BoardsService);
+    });
+
+    it('should update task', () => {
+      const id = '1669634064189';
+      const url = `http://localhost:3000/tasks/${id}`;
+
+      const task =    {
+        id: 1669634064189,
+        description: "third",
+        color: "#FDAA3D",
+        type: "done",
+        creationDate: 1669634064187,
+        boardId: "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
+    };
+
+      service.updateTask(task).subscribe({
+        next: (data) => expect(data).toEqual(tasksMock),
+        error: fail,
+      });
+
+      const req = httpTestingController.expectOne(url);
+      expect(req.request.method).toEqual('PATCH');
+      expect(req.request.body).toEqual(task);
+    });
+  });
+
+  describe('deleteTask', () => {
+    it('should delete task', () => {
+      const id = 1669634064187;
+      const url = `http://localhost:3000/tasks/${id}`;
+
+      service.deleteTask(id).subscribe({
+        next: (board) => expect(board).toBeTruthy(),
+        error: fail,
+      });
+
+      const req = httpTestingController.expectOne(url);
+      expect(req.request.method).toEqual('DELETE');
+
+      req.flush(tasksMock);
+    });
+  });
+
+  //comments
+  describe('createComment', () => {
+    beforeEach(() => {
+      service = TestBed.inject(BoardsService);
+    });
+
+    it('should create comment', () => {
+      const url = `http://localhost:3000/comments/`;
+
+      const comment = {
+        id: 1,
+        text: 'comment 1',
+        boardId: "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
+        taskId: 1
+    }
+
+      service.createComment(comment).subscribe({
+        next: (data) => expect(data).toEqual(commentsMock),
+        error: fail,
+      });
+
+      const req = httpTestingController.expectOne(url);
+      expect(req.request.method).toEqual('POST');
+      expect(req.request.body).toEqual(comment);
+    });
+  });
+
+  describe('deleteComment', () => {
+    it('should delete comment', () => {
+      const id = 1;
+      const url = `http://localhost:3000/comments/${1}`;
+
+      service.deleteComment(id).subscribe({
+        next: (data) => expect(data).toBeTruthy(),
+        error: fail,
+      });
+
+      const req = httpTestingController.expectOne(url);
+      expect(req.request.method).toEqual('DELETE');
+
+      req.flush(commentsMock);
+    });
+  });
+
 });

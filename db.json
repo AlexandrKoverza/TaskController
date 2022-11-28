@@ -5,56 +5,35 @@
       "name": "First board",
       "description": "First board description",
       "creationDate": 1669574819554
-    },
-    {
-      "id": "1669575216142",
-      "name": "Second board",
-      "description": "Second board description",
-      "creationDate": 1669575216142
     }
   ],
   "tasks": [
     {
-      "id": 1,
-      "description": "234234234",
-      "color": "#CECF9C",
-      "type": "toDo",
-      "creationDate": 1669574819554,
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
-    },
-    {
-      "id": 3,
-      "description": "123123123",
-      "color": "#31CF63",
-      "type": "done",
-      "creationDate": 1669574819554,
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
-    },
-    {
-      "id": 1669579130121,
-      "description": "afasdfasf",
-      "color": "#CECF9C",
-      "type": "toDo",
-      "creationDate": 1669579130121,
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
-    },
-    {
-      "id": 1669579172292,
-      "description": "",
+      "id": 1669634064187,
+      "description": "asdasda",
       "color": "#FDAA3D",
       "type": "inProgress",
-      "creationDate": 1669579172292,
+      "creationDate": 1669634064187,
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
+    },
+    {
+      "id": 1669638979931,
+      "description": "SDFSDFS1111",
+      "color": "#CECF9C",
+      "type": "toDo",
+      "creationDate": 1669638979931,
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
+    },
+    {
+      "id": 1669640411251,
+      "description": "asdasdasd222222",
+      "color": "#31CF63",
+      "type": "done",
+      "creationDate": 1669640411251,
       "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
     }
   ],
-  "comments": [
-    {
-      "id": 1669579161057,
-      "text": "1",
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
-      "taskId": 1
-    }
-  ],
+  "comments": [],
   "users": [
     {
       "email": "test@test.com",

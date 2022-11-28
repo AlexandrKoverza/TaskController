@@ -13,19 +13,4 @@ describe('ModalService', () => {
     expect(service).toBeTruthy();
   });
 
-  // it('open', () => {
-  //   let a = true
-  //   let fakeVisibleTrue = (a: any) => { return a }
-
-  //   expect(fakeVisibleTrue).toBe(true);
-  // });
-
-  // it('close', () => {
-  //   let a = false
-
-  //   let fakeVisibleFalse = (a: any) => { return a }
-
-  //   expect(fakeVisibleFalse).toBe(false);
-  // });
-
 });

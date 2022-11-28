@@ -60,19 +60,18 @@ describe('BoardsComponent', () => {
 
   xit('deleteBoard', () => {
     const id = 'd8568642-6dbd-4135-a1ba-0ebd9f1f9a54';
-    const url = 'http://localhost:3000/boards';
 
     expect(component.deleteBoard(id)).toBe(
       service
         .deleteBoard(id)
         .pipe(take(1))
         .subscribe({
-          next: (boards: any) => expect(boards).toEqual(boardsMock),
+          next: (boards: any) => expect(boards).toBeTruthy(),
           error: fail,
         })
     );
 
-    service.getBoards();
+    // service.getBoards();
 
   });
 
