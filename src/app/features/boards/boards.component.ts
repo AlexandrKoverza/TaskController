@@ -1,5 +1,5 @@
 import { Observable, of, take } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Board } from '../../models';
 import { BoardsService, ModalService } from '../../services';
@@ -9,18 +9,29 @@ import { BoardsService, ModalService } from '../../services';
   templateUrl: './boards.component.html',
   styleUrls: ['./boards.component.scss'],
 })
-export class BoardsComponent {
+export class BoardsComponent implements OnInit{
   searchText: string = '';
   boards: Board[] = [];
-  boards$: Observable<Board[]> = this.boardsService.getBoards();
-  filterName: boolean = false
-  filterTasks: boolean = false
+  filterName: boolean = false;
+  filterTasks: boolean = false;
 
   constructor(
     private router: Router,
     public modalService: ModalService,
     public boardsService: BoardsService,
+    private changeDetectionRef: ChangeDetectorRef
   ) {}
+
+  ngOnInit() {
+    this.update()
+  }
+
+  update() {
+    this.boardsService.getBoards().subscribe((boards) => {
+      this.boards = boards
+      this.changeDetectionRef.markForCheck()
+    })
+  }
 
   toBoard(id: string) {
     this.router.navigate(['/board', id]);
@@ -35,16 +46,18 @@ export class BoardsComponent {
   }
 
   deleteBoard(id: string) {
-    return this.boardsService.deleteBoard(id).pipe(take(1)).subscribe(() => {
-      this.boardsService.getBoards()
-    });
+    return this.boardsService
+      .deleteBoard(id)
+      .subscribe(() => {
+        this.update()
+      });
   }
 
   changeName() {
-    return this.filterName = !this.filterName;
+    return (this.filterName = !this.filterName);
   }
 
   changeTasks() {
-    return this.filterTasks = !this.filterTasks
+    return (this.filterTasks = !this.filterTasks);
   }
 }
