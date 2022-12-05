@@ -21,6 +21,9 @@
 }
 
 .details-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 50px;
   height: 33px;
   background-color: transparent;

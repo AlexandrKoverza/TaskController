@@ -15,15 +15,11 @@
             <button class="sort-button" (click)="changeTasks()">tasks</button>
           </div>
         </div>
-        
       </div>
       <div>
         <div *ngFor="let board of boards | searchPipe: searchText | sortPipe: filterName | taskPipe: filterTasks">
           <app-board-list-item
             [board]="board"
-            (showBoard)="toBoard($event)"
-            (details)="detailsBoard($event)"
-            (update)="updateBoard($event)"
             (delete)="deleteBoard($event)"
           ></app-board-list-item>
         </div>

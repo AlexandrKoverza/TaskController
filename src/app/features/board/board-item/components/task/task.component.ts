@@ -5,9 +5,11 @@ import {
   EventEmitter,
   Output,
   OnInit,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EMPTY, Observable } from 'rxjs';
+import { Board } from 'src/app/models';
 import { BoardsService } from 'src/app/services';
 
 @Component({
@@ -17,10 +19,13 @@ import { BoardsService } from 'src/app/services';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskComponent implements OnInit {
+  boards: Board[] = [];
+
   @Input() item: any;
   @Output() emitText: EventEmitter<{ taskId: number | string; text: number | string }> =
     new EventEmitter();
   @Output() emitDeleteItem: EventEmitter<number> = new EventEmitter();
+  
   comment = this.formBuilder.group({
     text: ['', Validators.required],
   });
@@ -34,15 +39,25 @@ export class TaskComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private boardsService: BoardsService,
+    private changeDetectionRef: ChangeDetectorRef
+
   ) {}
 
   ngOnInit() {
+    this.showBoards()
     this.comment = this.formBuilder.group({
       text: [this.item.text, Validators.required],
     });
     this.form = this.formBuilder.group({
       description: [this.item.description, Validators.required],
     });
+  }
+
+  showBoards() {
+    this.boardsService.getBoards().subscribe((boards) => {
+      this.boards = boards
+      this.changeDetectionRef.markForCheck()
+    })
   }
 
   onItemDelete(id: number) {
@@ -55,7 +70,9 @@ export class TaskComponent implements OnInit {
       text: this.comment.value.text as string,
       boardId: boardId as string,
       taskId: taskId as string
-    }).subscribe();
+    }).subscribe(() => {
+      this.showBoards()
+    });
     this.emitText.emit({ taskId, text: this.commentInput });
     this.commentInput = '';
   }

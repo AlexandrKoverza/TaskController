@@ -18,15 +18,13 @@
       <span>{{ board.creationDate | date: "MM/dd/yy" }}</span>
     </div>
     <div class="board-buttons">
-      <button class="board-button goBtn" (click)="toBoard()">
-        Go to board
-      </button>
-      <button class="board-button detailsBtn" (click)="detailsBoard()">
+      <a class="board-button goBtn" [routerLink]="['/board', board.id]">Go to board</a>      
+      <a class="board-button detailsBtn" [routerLink]="['/board', board.id, 'details']">
         <img src="assets/images/circle-info-solid.svg" alt="image"/>
-      </button>
-      <button class="board-button updateBtn" (click)="updateBoard()">
+      </a>      
+      <a class="board-button updateBtn" [routerLink]="['/board', board.id, 'edit']">
         <img src="assets/images/pen-solid.svg" alt="image"/>
-      </button>
+      </a>
       <button class="board-button deleteBtn" (click)="deleteBoard()">
         <img src="assets/images/trash-can-regular.svg" alt="image"/>
       </button>

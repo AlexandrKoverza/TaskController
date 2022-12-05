@@ -8,23 +8,7 @@ import { Board } from '../../../../models';
 })
 export class BoardListItemComponent {
   @Input() board!: Board;
-
-  @Output() showBoard = new EventEmitter<string>();
-  @Output() details = new EventEmitter<string>();
-  @Output() update = new EventEmitter<string>();
   @Output() delete = new EventEmitter<string>();
-
-  toBoard() {
-    this.showBoard.emit(this.board.id);
-  }
-
-  detailsBoard() {
-    this.details.emit(this.board.id);
-  }
-
-  updateBoard() {
-    this.update.emit(this.board.id)
-  }
 
   deleteBoard() {
     this.delete.emit(this.board.id);

@@ -1,7 +1,7 @@
 <section class="details" *ngIf="board$ | async as board">
   <div class="container">
     <div class="details-inner">
-      <button class="details-back" (click)="back()">🠘</button>
+      <a [routerLink]="['/']" class="details-back">🠘</a>
       <div class="details-block">
         <p class="board-details__text">
           Board name: <br> <span>{{ board.name }}</span>

@@ -1,0 +1,171 @@
+
+.tasks-row {
+    margin: 0 auto;
+    margin-top: 15px;
+    min-width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    overflow-x: scroll;
+  }
+  
+  .task {
+    min-width: 450px;
+  
+    @media (max-width: 767px) {
+      min-width: 380px;
+    }
+  }
+  
+  .task-do__top {
+    width: 100%;
+    padding: 8px;
+    background-color: #eceef2;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  
+    .task-do__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 25px;
+      height: 25px;
+      border: 2px solid black;
+      margin-left: 7px;
+      border-radius: 50%;
+      padding: 3px;
+      background-color: transparent;
+      cursor: pointer;
+    }
+  }
+  
+  .task-do__name {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .task-do__block {
+    display: flex;
+    margin-top: 8px;
+    align-items: center;
+  }
+  
+  .task-do__input {
+    width: 100%;
+    border: 1px solid black;
+    height: 28px;
+    padding-left: 5px;
+    border-radius: 5px;
+  }
+  
+  .task-list {
+    width: 100%;
+    min-height: 90px;
+    max-height: 450px;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 10px;
+    padding-right: 8px;
+    background-color: #eceef2;
+    border-top: none;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  
+    @media (max-width: 767px) {
+      max-height: 350px;
+    }
+  }
+  
+  .task-item {
+    position: relative;
+    margin-top: 5px;
+    padding: 7px;
+    width: 100%;
+    border-radius: 3px;
+    transition: all 50ms ease;
+    cursor: grab;
+  
+    &__name {
+      width: 50px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  
+    &__date {
+      display: block;
+      font-size: 14px;
+      color: black;
+    }
+  }
+  
+  .task-do__top .controls-block {
+    margin-top: 8px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    width: 2px;
+    margin: 2px;
+    background-color: #bebebe;
+    border-radius: 9em;
+  }
+  
+  .task-do__top .controls-block .sort-block {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sortBlock {
+    margin-right: 0;
+    margin-top: 15px;
+  }
+  
+  .sort-text {
+    display: block;
+    text-transform: lowercase;
+    color: #3b3838;
+  }
+  
+  .sort-text:last-child {
+    margin-left: 5px;
+  }
+  
+  .sort-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40px;
+    height: 33px;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 150ms ease;
+    color: black;
+    border: 1px solid #bebebe;
+    background-color: transparent;
+  }
+  
+  .sort-button:nth-child(3) {
+    margin-right: 5px;
+  }
+  
+  .sort-button:hover {
+    background-color: #eeeeee;
+  }
+  
+  .sortDate {
+    width: 80px;
+  }

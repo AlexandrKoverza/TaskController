@@ -1,7 +1,7 @@
-<section class="edit">
+<section class="edit" *ngIf="board">
   <div class="container">
     <div class="edit-inner">
-      <button class="edit-back" (click)="back()">🠘</button>
+      <a class="edit-back" [routerLink]="['/']">🠘</a>
       <p class="board-edit__id">Board ID: <span>{{ board.id }}</span></p>
       <form [formGroup]="form" *ngIf="form">
         <p class="board-edit__text">Board name:</p>

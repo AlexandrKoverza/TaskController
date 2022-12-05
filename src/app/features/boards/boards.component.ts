@@ -1,6 +1,4 @@
-import { Observable, of, take } from 'rxjs';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
 import { Board } from '../../models';
 import { BoardsService, ModalService } from '../../services';
 
@@ -16,41 +14,24 @@ export class BoardsComponent implements OnInit{
   filterTasks: boolean = false;
 
   constructor(
-    private router: Router,
     public modalService: ModalService,
     public boardsService: BoardsService,
     private changeDetectionRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this.update()
+    this.showBoards()
   }
 
-  update() {
+  showBoards() {
     this.boardsService.getBoards().subscribe((boards) => {
       this.boards = boards
       this.changeDetectionRef.markForCheck()
     })
   }
 
-  toBoard(id: string) {
-    this.router.navigate(['/board', id]);
-  }
-
-  detailsBoard(id: string) {
-    this.router.navigate(['/board', id, 'details']);
-  }
-
-  updateBoard(id: string) {
-    this.router.navigate(['/board', id, 'edit']);
-  }
-
   deleteBoard(id: string) {
-    return this.boardsService
-      .deleteBoard(id)
-      .subscribe(() => {
-        this.update()
-      });
+    return this.boardsService.deleteBoard(id).subscribe(() => this.showBoards());
   }
 
   changeName() {

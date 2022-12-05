@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Board } from 'src/app/models';
 import { BoardsService, ModalService } from '../../../services';
 
 @Component({
@@ -8,17 +10,30 @@ import { BoardsService, ModalService } from '../../../services';
   styleUrls: ['./board-popup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BoardPopupComponent {
+export class BoardPopupComponent implements OnInit{
+  boards: Board[] = [];
   form = this.fb.group({
     name: ['', Validators.required],
     description: ['', Validators.required]
   })
 
   constructor(
+    private router: Router,
     private fb: FormBuilder,
     private modalService: ModalService,
-    private boardsService: BoardsService
-  ) {
+    private boardsService: BoardsService,
+    private changeDetectionRef: ChangeDetectorRef
+  ) {}
+
+  ngOnInit() {
+    this.showBoards()
+  }
+
+  showBoards() {
+    this.boardsService.getBoards().subscribe((boards) => {
+      this.boards = boards
+      this.changeDetectionRef.markForCheck()
+    })
   }
 
   submit() {
@@ -28,9 +43,10 @@ export class BoardPopupComponent {
         name: this.form.value.name as string,
         description: this.form.value.description as string,
         creationDate: Date.now(),
-      })
-      .subscribe(() => {
+      }).subscribe(() => {
         this.modalService.close();
+        this.router.navigate(['/']);
+        this.showBoards()
       });
   }
 

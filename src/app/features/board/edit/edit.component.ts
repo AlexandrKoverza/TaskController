@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
@@ -12,19 +12,20 @@ import { Board } from '../../../models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditComponent implements OnInit {
+  boards: Board[] = [];
+  board: any;
   form: FormGroup = this.formBuilder.group({
     name: ['', Validators.required],
     description: ['', Validators.required],
   });
-  board: any;
 
   constructor(
     private router: Router,
     public activatedRoute: ActivatedRoute,
     public boardsService: BoardsService,
-    private formBuilder: FormBuilder
-  ) {
-  }
+    private formBuilder: FormBuilder,
+    private changeDetectionRef: ChangeDetectorRef
+  ) {}
 
   back() {
     this.router.navigate(['/']);
@@ -38,6 +39,7 @@ export class EditComponent implements OnInit {
         })
       )
       .subscribe((board: Board) => {
+        this.showBoards()
         this.board.id = board.id;
         this.form = this.formBuilder.group({
           name: [board.name, Validators.required],
@@ -45,6 +47,13 @@ export class EditComponent implements OnInit {
         });
         this.board.creationDate = board.creationDate;
       });
+  }
+
+  showBoards() {
+    this.boardsService.getBoards().subscribe((boards) => {
+      this.boards = boards
+      this.changeDetectionRef.markForCheck()
+    })
   }
 
   saveBoard() {

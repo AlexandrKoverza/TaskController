@@ -1,4 +1,4 @@
-<div [ngStyle]="{ background: item.color }" >
+<div [ngStyle]="{ background: item.color }">
   <div class="task-row">
     <div *ngIf="edit">
       <form [formGroup]="form" (ngSubmit)="updateTaskDescription(item)">
