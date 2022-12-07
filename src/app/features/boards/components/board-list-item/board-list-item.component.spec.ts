@@ -24,36 +24,6 @@ xdescribe('BoardListItemComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('toBoard', () => {
-    const spy = spyOn(component.showBoard, 'emit');
-
-    const link = debug.nativeElement.querySelector('.goBtn').querySelector('button');
-    link.click();
-    fixture.detectChanges();
-
-    expect(spy).toHaveBeenCalledOnceWith(boardsMock[0].id);
-  });
-
-  it('detailsBoard', () => {
-    const spy = spyOn(component.details, 'emit');
-
-    const link = debug.nativeElement.querySelector('.detailsBtn').querySelector('button');
-    link.click();
-    fixture.detectChanges();
-
-    expect(spy).toHaveBeenCalledOnceWith(boardsMock[0].id);
-  });
-
-  it('updateBoard', () => {
-    const spy = spyOn(component.update, 'emit');
-
-    const link = debug.nativeElement.querySelector('.updateBtn').querySelector('button');
-    link.click();
-    fixture.detectChanges();
-
-    expect(spy).toHaveBeenCalledOnceWith(boardsMock[0].id);
-  });
-
   it('deleteBoard', () => {
     const spy = spyOn(component.delete, 'emit');
 

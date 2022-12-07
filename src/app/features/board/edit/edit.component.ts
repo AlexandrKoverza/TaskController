@@ -27,10 +27,6 @@ export class EditComponent implements OnInit {
     private changeDetectionRef: ChangeDetectorRef
   ) {}
 
-  back() {
-    this.router.navigate(['/']);
-  }
-
   ngOnInit() {
     this.board = this.activatedRoute.params
       .pipe(

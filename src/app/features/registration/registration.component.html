@@ -25,7 +25,7 @@
             valid</p>
         </div>
         <button class="formButton" [disabled]="!signUpForm.valid" (click)="registration()">Registration</button>
-        <p class="formText">Already have an account? <button (click)="toLogin()">Login</button> </p>
+        <p class="formText">Already have an account? <a [routerLink]="['/login']">Login</a> </p>
       </form>
     </div>
   </div>

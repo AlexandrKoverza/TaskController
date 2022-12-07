@@ -6,7 +6,6 @@ import { BoardPopupComponent } from './components/board-popup/board-popup.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchPipe } from './pipes/search.pipe';
 import { SortPipePipe } from './pipes/sort-pipe.pipe';
-import { TaskPipePipe } from './pipes/task-pipe.pipe';
 
 const components = [
   HeaderComponent,
@@ -17,7 +16,6 @@ const components = [
 const pipes = [
   SearchPipe,
   SortPipePipe,
-  TaskPipePipe,
 ];
 
 @NgModule({

@@ -12,12 +12,11 @@
           <div class="sort-block">
             <span class="sort-text">sort by: </span>
             <button class="sort-button" (click)="changeName()">board name</button>
-            <button class="sort-button" (click)="changeTasks()">tasks</button>
           </div>
         </div>
       </div>
       <div>
-        <div *ngFor="let board of boards | searchPipe: searchText | sortPipe: filterName | taskPipe: filterTasks">
+        <div *ngFor="let board of boards | searchPipe: searchText | sortPipe: filterName">
           <app-board-list-item
             [board]="board"
             (delete)="deleteBoard($event)"

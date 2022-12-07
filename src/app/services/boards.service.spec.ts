@@ -69,8 +69,6 @@ describe('BoardsService', () => {
 
       const req = httpTestingController.expectOne(url);
       expect(req.request.method).toEqual('GET');
-
-      req.flush(boardsMock[0]);
     });
   });
 

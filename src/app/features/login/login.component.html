@@ -22,7 +22,7 @@
 
         <p *ngIf="httpError">{{httpError}}</p>
 
-        <p class="formText">Not registered yet? <button (click)="toRegistration()">Registration</button> </p>
+        <p class="formText">Not registered yet? <a [routerLink]="['/registration']">Registration</a> </p>
       </form>
     </div>
   </div>

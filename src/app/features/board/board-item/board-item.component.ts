@@ -56,48 +56,48 @@ export class BoardItemComponent implements OnInit {
     });
   }
 
-  // drop(event: CdkDragDrop<any[]>) {
-  //   if (event.previousContainer === event.container) {
-  //     moveItemInArray(
-  //       event.container.data,
-  //       event.previousIndex,
-  //       event.currentIndex
-  //     );
-  //   } else {
-  //     transferArrayItem(
-  //       event.previousContainer.data,
-  //       event.container.data,
-  //       event.previousIndex,
-  //       event.currentIndex
-  //     );
-  //   }
-  // }
+  addTask(type: string, color: string, boardId: any, column: any) {
+    this.boardsService
+      .createTask({
+        id: Date.now(),
+        description: this.form.value.description as string,
+        color: color as string,
+        type: type as string,
+        creationDate: Date.now(),
+        boardId: boardId as string,
+      }).subscribe(() => {
+        this.showBoard()
+      });
+  }
 
-  // addTask(type: string, color: string, boardId: any, column: any) {
-  //   this.boardsService
-  //     .createTask({
-  //       id: Date.now(),
-  //       description: this.form.value.description as string,
-  //       color: color as string,
-  //       type: type as string,
-  //       creationDate: Date.now(),
-  //       boardId: boardId as string,
-  //     }).subscribe(() => {
-  //       this.showBoard()
-  //     });
-  // }
+  onDeleteTask(itemId: number | string) {
+    this.boardsService.deleteTask(itemId).subscribe(() => {
+      this.boards = this.boards.filter((item) => item.id !== itemId);
+      this.showBoard()
+    })
+  }
 
-  // onDeleteTask(itemId: number | string) {
-  //   this.boardsService.deleteTask(itemId).subscribe(() => {
-  //     this.boards = this.boards.filter((item) => item.id !== itemId);
-  //     this.showBoard()
-  //   })
-  // }
+  onDeleteComment(commentId: number | string) {
+    return this.boardsService.deleteComment(commentId).subscribe(() => {
+      this.boards = this.boards.filter((item) => item.id !== commentId);
+      this.showBoard()
+    });
+  }
 
-  // onDeleteComment(commentId: number | string) {
-  //   return this.boardsService.deleteComment(commentId).subscribe(() => {
-  //     this.boards = this.boards.filter((item) => item.id !== commentId);
-  //     this.showBoard()
-  //   });
-  // }
+  drop(event: CdkDragDrop<any[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 import { ModalService } from './modal.service';
 
 describe('ModalService', () => {
@@ -11,6 +12,14 @@ describe('ModalService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('open', () => {
+    expect(service.open).toBeTruthy();
+  });
+
+  it('close', () => {
+    expect(service.close).toBeTruthy();
   });
 
 });

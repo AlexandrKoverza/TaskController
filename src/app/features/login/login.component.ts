@@ -31,10 +31,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  toRegistration() {
-    this.router.navigate(['/registration']);
-  }
-
   login() {
     this.httpError = '';
 

@@ -2,28 +2,12 @@
   "boards": [
     {
       "id": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
-      "name": "111dfsdcvzxdfvsdgvdfgvbxdfzg",
-      "description": "11111zgbxzcfbxzcfbxcbfx",
-      "creationDate": 1669574819554
+      "name": "First board",
+      "description": "First board description",
+      "creationDate": 23425325
     }
   ],
   "tasks": [
-    {
-      "id": 1669634064187,
-      "description": "asdasda",
-      "color": "#FDAA3D",
-      "type": "inProgress",
-      "creationDate": 1669634064187,
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
-    },
-    {
-      "id": 1669640411251,
-      "description": "asdasdasd222222",
-      "color": "#31CF63",
-      "type": "done",
-      "creationDate": 1669640411251,
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
-    },
     {
       "id": 1670008054374,
       "description": "gshdf",
@@ -53,43 +37,27 @@
       "creationDate": 1670008055522
     },
     {
-      "id": 1670009658110,
-      "description": "dfghdfg1",
+      "id": 1670433742498,
+      "description": "dfsafdafdsafdsa",
       "color": "#CECF9C",
       "type": "toDo",
-      "creationDate": 1670009658110,
+      "creationDate": 1670433742498,
       "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
     },
     {
-      "id": 1670251064125,
-      "description": "wer",
-      "color": "#CECF9C",
-      "type": "toDo",
-      "creationDate": 1670251064125,
+      "id": 1670433743981,
+      "description": "dfsafdafdsafdsa",
+      "color": "#FDAA3D",
+      "type": "inProgress",
+      "creationDate": 1670433743981,
       "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
     },
     {
-      "id": 1670251269065,
-      "description": "asdasda",
-      "color": "#CECF9C",
-      "type": "toDo",
-      "creationDate": 1670251269065,
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
-    },
-    {
-      "id": 1670251284634,
-      "description": "adsadsa",
-      "color": "#CECF9C",
-      "type": "toDo",
-      "creationDate": 1670251284634,
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
-    },
-    {
-      "id": 1670251289454,
-      "description": "sadasd",
-      "color": "#CECF9C",
-      "type": "toDo",
-      "creationDate": 1670251289454,
+      "id": 1670433746892,
+      "description": "dfsafdafdsafdsa",
+      "color": "#31CF63",
+      "type": "done",
+      "creationDate": 1670433746892,
       "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
     }
   ],

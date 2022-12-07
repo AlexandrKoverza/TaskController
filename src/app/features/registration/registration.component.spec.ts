@@ -1,8 +1,7 @@
-import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 import { AuthService } from 'src/app/auth';
 
 import { RegistrationComponent } from './registration.component';
@@ -10,19 +9,30 @@ import { RegistrationComponent } from './registration.component';
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
   let fixture: ComponentFixture<RegistrationComponent>;
-  let service: AuthService;
-  let router: Router;
+  let authService: AuthService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, HttpClientModule, RouterTestingModule],
+      imports: [FormsModule, ReactiveFormsModule],
+      providers: [
+              {
+                provide: AuthService,
+                useValue: {
+                  registration: jasmine.createSpy().and.returnValue(of(null)),
+                },
+              },
+              {
+                provide: Router,
+                useValue: {
+                  navigate: jasmine.createSpy()
+                },
+              },
+            ],
       declarations: [RegistrationComponent],
     }).compileComponents();
-
-    router = TestBed.inject(Router);
-    spyOn(router, 'navigate');
     
     fixture = TestBed.createComponent(RegistrationComponent);
+    authService = fixture.componentRef.injector.get(AuthService)
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -31,20 +41,8 @@ describe('RegistrationComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('toLogin', () => {
-    component.toLogin();
-    expect(router.navigate).toHaveBeenCalledWith(['/login']);
-  });
-
   it('registration', () => {
-    const obj = {
-      name: 'sfs',
-      email: 'sdsdf',
-      password: 'sdfsdf',
-    };
-
-    // const result = service.registration(obj);
-    // expect(result).toBe();
-    // expect(router.navigate).toHaveBeenCalledWith(['/']);
+    component.registration()
+    expect(authService.registration).toHaveBeenCalled()
   });
 });

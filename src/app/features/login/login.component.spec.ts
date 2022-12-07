@@ -1,18 +1,14 @@
-import { ChangeDetectorRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-import { Subject, of } from 'rxjs';
+import { of } from 'rxjs';
 import { AuthService } from 'src/app/auth';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let router: Router;
   let authService: AuthService;
-  let chr: ChangeDetectorRef;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -44,17 +40,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('toRegistration', () => {
-    component.toRegistration();
-    expect(router.navigate).toHaveBeenCalledWith(['/registration']);
-  });
-
-  fit('login', () => {
-    component.login()
-    expect(authService.login).toHaveBeenCalled()
-  });
-
-  fit('login', () => {
+  it('login', () => {
     component.login()
     expect(authService.login).toHaveBeenCalled()
   });

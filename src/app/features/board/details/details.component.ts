@@ -14,7 +14,6 @@ export class DetailsComponent implements OnInit {
   board$: Observable<Board> = EMPTY;
 
   constructor(
-    // private router: Router,
     public activatedRoute: ActivatedRoute,
     public boardsService: BoardsService
   ) {
@@ -27,8 +26,4 @@ export class DetailsComponent implements OnInit {
       )
     );
   }
-
-  // back() {
-  //   this.router.navigate(['/']);
-  // }
 }
