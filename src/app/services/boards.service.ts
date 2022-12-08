@@ -1,51 +1,75 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Board } from '../models';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { BehaviorSubject, Observable } from "rxjs";
+import { Board, BoardBase } from "../models";
 
 const options = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  headers: new HttpHeaders({ "Content-Type": "application/json" })
 };
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root"
 })
 export class BoardsService {
-  url: string = 'http://localhost:3000/boards';
-  boards: Board[] = [];
+  url: string = "http://localhost:3000/boards";
+
+  boards$ = new BehaviorSubject<BoardBase[]>([]);
+
+  board$ = new BehaviorSubject<Board | null>(null);
 
   constructor(private http: HttpClient) {}
 
   //boards
-  getBoard(id: string): Observable<any> {
-    return this.http.get<Board>(`${ this.url }/${ id }?_embed=tasks&_embed=comments`)
+  getBoard(id: string): Observable<Board> {
+    return this.http.get<Board>(`${this.url}/${id}?_embed=tasks&_embed=comments`);
   }
 
-  getBoards(): Observable<any[]> {
-    return this.http.get<any[]>(this.url)
+  updateBoardInfo(boardId: string): void {
+    this.getBoard(boardId).subscribe(board => {
+      // console.log(board);
+      this.board$.next(board);
+    });
+  };
+
+  getBoard$(): Observable<Board | null> {
+    return this.board$.asObservable();
+  }
+
+  getBoards(): Observable<BoardBase[]> {
+    return this.http.get<BoardBase[]>(this.url);
+  }
+
+  getBoards$(): Observable<BoardBase[]> {
+    return this.boards$.asObservable();
+  }
+
+  updateBoards(): void {
+    this.getBoards().subscribe(boards => {
+      this.boards$.next(boards);
+    })
   }
 
   createBoard(board: any): Observable<any> {
     const newBoard = {
-      ...board,
-    }
+      ...board
+    };
 
     return this.http.post<Board>(this.url, newBoard);
   }
 
   updateBoard(board: Partial<any>): Observable<any[]> {
-    return this.http.patch<any[]>(`${ this.url }/${ board.id }`, board, options);
+    return this.http.patch<any[]>(`${this.url}/${board.id}`, board, options);
   }
 
   deleteBoard(id: any) {
-    return this.http.delete<any[]>(`${ this.url }/${ id }`, id);
+    return this.http.delete<any[]>(`${this.url}/${id}`, id);
   }
 
   //tasks
   createTask(task: any): Observable<any> {
     const newTask = {
       ...task
-    }
+    };
 
     return this.http.post<any>(`http://localhost:3000/tasks/`, newTask);
   }
@@ -61,8 +85,8 @@ export class BoardsService {
   //comments
   createComment(comment: any) {
     const newComment = {
-      ...comment,
-    }
+      ...comment
+    };
 
     return this.http.post<any>(`http://localhost:3000/comments/`, newComment);
   }

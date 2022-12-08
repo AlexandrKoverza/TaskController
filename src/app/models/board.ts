@@ -1,13 +1,14 @@
-import { BoardColumn } from './board-column';
+import { ITask } from "./task";
+import { IComment } from "./comment";
 
 export interface BoardBase {
+  id: string;
   name: string;
   description: string;
+  creationDate: number;
 }
 
 export interface Board extends BoardBase {
-type: any;
-  id: string;
-  column: BoardColumn[];
-  creationDate: number;
+  tasks?: ITask[];
+  comments?: IComment[]
 }

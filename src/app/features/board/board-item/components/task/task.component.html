@@ -1,33 +1,33 @@
-<div [ngStyle]="{ background: item.color }">
+<div [ngStyle]="{ background: task.color }">
   <div class="task-row">
     <div *ngIf="edit">
-      <form [formGroup]="form" (ngSubmit)="updateTaskDescription(item)">
+      <form [formGroup]="form" (ngSubmit)="updateTaskDescription(task)">
         <input type="text" placeholder="edit card" class="task-input" formControlName="description" />
         <button class="task-save" type="submit">Save</button>
       </form>
     </div>
     <div *ngIf="!edit" class="task-row__top">
-      <span class="task-item__name">{{ item.description}}</span>
-      <img (click)="onItemDelete(item.id)" src="assets/images/trash-can-regular.svg" alt="image"
-        class="task-img" />
+      <span class="task-item__name">{{ task.description}}</span>
+      <img (click)="onItemDelete(task.id)" src="assets/images/trash-can-regular.svg" alt="image"
+           class="task-img" />
     </div>
   </div>
-  
+
   <div class="task-row">
-    <span class="task-item__date">{{ item.creationDate | date: "MM/dd/yy"}}</span>
-  
+    <span class="task-item__date">{{ task.creationDate | date: "MM/dd/yy"}}</span>
+
     <div class="task-buttons">
       <img src="assets/images/pen-solid.svg" alt="image" class="task-img" (click)="editCard()" />
       <div class="task-comment" >
         <img (click)="open = !open" src="assets/images/comments.svg" alt="image" class="task-img" />
-        
+        <div>{{calculateComments(comments, task.id)}}</div>
       </div>
     </div>
   </div>
-  
+
   <div *ngIf="open" class="task-row task-comments">
     <div class="comment-block">
-      <form [formGroup]="comment" (ngSubmit)="onAddComment(item.id, item.boardId)">
+      <form [formGroup]="comment" (ngSubmit)="onAddComment(task.id, task.boardId)">
         <input type="text" class="comment-block__input" placeholder="comment..." formControlName="text" [(ngModel)]="commentInput" />
         <button class="comment-block__button">
           Send

@@ -38,7 +38,7 @@
   <div *ngFor="let item of board.tasks">
     <div *ngIf="item.type === column.type">
       <div class="task-list">
-        <app-task cdkDrag [cdkDragData]="item" [item]="item" (emitDeleteItem)="onDeleteTask(item.id)">
+        <app-task cdkDrag [cdkDragData]="item" [task]="item" (emitDeleteItem)="onDeleteTask(item.id)">
           <div *ngFor="let comment of board.comments">
             <div *ngIf="comment.taskId === item.id">
               <app-comment [comment]="comment" (emitComment)="onDeleteComment(comment.id)">

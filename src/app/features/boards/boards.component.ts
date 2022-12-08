@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Board } from '../../models';
+import { Board, BoardBase } from "../../models";
 import { BoardsService, ModalService } from '../../services';
 
 @Component({
@@ -9,7 +9,7 @@ import { BoardsService, ModalService } from '../../services';
 })
 export class BoardsComponent implements OnInit{
   searchText: string = '';
-  boards: Board[] = [];
+  boards: BoardBase[] = [];
   filterName: boolean = false;
   filterTasks: boolean = false;
 
@@ -20,25 +20,32 @@ export class BoardsComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-    this.showBoards()
+    // this.showBoards()
+    this.boardsService.getBoards$().subscribe(boards => {
+      this.boards = boards;
+      this.changeDetectionRef.markForCheck()
+    });
+
+    this.boardsService.updateBoards();
   }
 
-  showBoards() {
-    this.boardsService.getBoards().subscribe((boards) => {
-      this.boards = boards
-      this.changeDetectionRef.markForCheck()
-    })
-  }
+  // showBoards() {
+  //   this.boardsService.getBoards().subscribe((boards) => {
+  //     this.boards = boards
+  //   })
+  // }
 
   deleteBoard(id: string) {
-    return this.boardsService.deleteBoard(id).subscribe(() => this.showBoards());
+    return this.boardsService.deleteBoard(id).subscribe(() => {
+      this.boardsService.updateBoards();
+    });
   }
 
   changeName() {
     return (this.filterName = !this.filterName);
   }
 
-  changeTasks() {
-    return (this.filterTasks = !this.filterTasks);
-  }
+  // changeTasks() {
+  //   return (this.filterTasks = !this.filterTasks);
+  // }
 }
