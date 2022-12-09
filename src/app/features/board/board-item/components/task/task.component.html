@@ -8,8 +8,7 @@
     </div>
     <div *ngIf="!edit" class="task-row__top">
       <span class="task-item__name">{{ task.description}}</span>
-      <img (click)="onItemDelete(task.id)" src="assets/images/trash-can-regular.svg" alt="image"
-           class="task-img" />
+      <img (click)="onItemDelete(task.id)" src="assets/images/trash-can-regular.svg" alt="image" class="task-img" />
     </div>
   </div>
 

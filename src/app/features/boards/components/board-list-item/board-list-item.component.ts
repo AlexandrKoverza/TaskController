@@ -7,7 +7,7 @@ import { Board } from '../../../../models';
   styleUrls: ['./board-list-item.component.scss'],
 })
 export class BoardListItemComponent {
-  @Input() board!: Board;
+  @Input() board: Board  = {} as Board;
   @Output() delete = new EventEmitter<string>();
 
   deleteBoard() {

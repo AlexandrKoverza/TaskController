@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { commentsMock } from 'src/mocks/comments-mock';
 import { CommentComponent } from './comment.component';
 
-xdescribe('CommentComponent', () => {
+describe('CommentComponent', () => {
   let component: CommentComponent;
   let fixture: ComponentFixture<CommentComponent>;
   let debug: DebugElement;
@@ -26,12 +26,13 @@ xdescribe('CommentComponent', () => {
 
   it('onCommentEmit', () => {
     const spy = spyOn(component.emitComment, 'emit');
-    const text = 'comment 1'
+    const comment = commentsMock[0];
+    component.comment = comment;
 
-    const link = debug.nativeElement.querySelector('.comment-task__img').querySelector('img');
+    const link = debug.nativeElement.querySelector('img');
     link.click();
     fixture.detectChanges();
 
-    expect(spy(text)).toHaveBeenCalledOnceWith(commentsMock[0].text);
+    expect(spy).toHaveBeenCalledOnceWith(comment);
   });
 });

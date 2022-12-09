@@ -11,7 +11,6 @@ export class BoardsComponent implements OnInit{
   searchText: string = '';
   boards: BoardBase[] = [];
   filterName: boolean = false;
-  filterTasks: boolean = false;
 
   constructor(
     public modalService: ModalService,
@@ -45,7 +44,4 @@ export class BoardsComponent implements OnInit{
     return (this.filterName = !this.filterName);
   }
 
-  // changeTasks() {
-  //   return (this.filterTasks = !this.filterTasks);
-  // }
 }

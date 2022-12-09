@@ -14,9 +14,7 @@ export class HeaderComponent {
     private authService: AuthService
   ) {}
 
-  userName$ = this.authService.userName$.pipe(
-    tap(name => console.log(name))
-  );
+  userName$ = this.authService.userName$
 
   exit() {
     this.authService.logout();

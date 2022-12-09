@@ -26,11 +26,9 @@ export class TaskComponent implements OnInit {
 
   board$: Observable<Board | null> = EMPTY;
 
-  @Input() task!: ITask;
+  @Input() task: ITask = {} as ITask;
 
   @Input() comments?: IComment[] = [];
-  @Output() emitText: EventEmitter<{ taskId: number | string; text: number | string }> =
-    new EventEmitter();
   @Output() emitDeleteItem: EventEmitter<number> = new EventEmitter();
 
   comment = this.formBuilder.group({
@@ -81,7 +79,7 @@ export class TaskComponent implements OnInit {
     }).subscribe(() => {
       this.showBoard();
     });
-    this.emitText.emit({ taskId, text: this.commentInput });
+
     this.commentInput = "";
   }
 
@@ -90,6 +88,7 @@ export class TaskComponent implements OnInit {
   }
 
   updateTaskDescription(item: ITask) {
+    // console.log('form',this.form.value);
     this.boardsService.updateTask({
       ...item,
       description: this.form.value.description

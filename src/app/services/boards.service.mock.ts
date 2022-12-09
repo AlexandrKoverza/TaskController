@@ -7,7 +7,6 @@ import { boardsMock } from 'src/mocks/boards-mock';
   providedIn: 'root',
 })
 export class BoardsServiceMock {
-
   getBoard(id: string) {
     return of(boardsMock[0])
   }

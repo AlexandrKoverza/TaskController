@@ -5,6 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { IComment } from "../../../../../models/comment";
 
 @Component({
   selector: 'app-comment',
@@ -13,10 +14,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommentComponent {
-  @Input() comment: any;
-  @Output() emitComment: EventEmitter<any> = new EventEmitter();
+  @Input() comment: IComment = {} as IComment;
+  @Output() emitComment: EventEmitter<IComment> = new EventEmitter();
 
-  onCommentEmit(comment: any) {
+  onCommentEmit(comment: IComment) {
     this.emitComment.emit(comment);
   }
 }

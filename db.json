@@ -46,7 +46,7 @@
     },
     {
       "id": 1670533334491,
-      "description": "первая задача",
+      "description": "первая задача1",
       "color": "#CECF9C",
       "type": "toDo",
       "creationDate": 1670533334491,
@@ -62,12 +62,6 @@
     }
   ],
   "comments": [
-    {
-      "id": 1670533268585,
-      "text": "sdfgsdgfsdg",
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
-      "taskId": 1670433743981
-    },
     {
       "id": 1670539361466,
       "text": "22",
@@ -85,6 +79,12 @@
       "text": "333",
       "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
       "taskId": 1670539445003
+    },
+    {
+      "id": 1670622694664,
+      "text": "jhgj",
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
+      "taskId": 1670533334491
     }
   ],
   "users": [
@@ -92,11 +92,6 @@
       "email": "test@test.com",
       "password": "$2a$10$As2T91oB13NL3.LjflOvDuozVAbrAkL7WmZbGFzga2vO4kJl8d6K6",
       "name": "Test"
-    },
-    {
-      "email": "Sasha@gmail.com",
-      "password": "$2a$10$sMo7PSXh.fC0khXg10CMTuLwJXzv.6.D73h4NQarCZYFTb4Z3wHtm",
-      "name": "Sasha"
     }
   ]
 }

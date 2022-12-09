@@ -3,7 +3,7 @@ import { DebugElement } from '@angular/core';
 import { BoardListItemComponent } from './board-list-item.component';
 import { boardsMock } from 'src/mocks/boards-mock';
 
-xdescribe('BoardListItemComponent', () => {
+describe('BoardListItemComponent', () => {
   let component: BoardListItemComponent;
   let fixture: ComponentFixture<BoardListItemComponent>;
   let debug: DebugElement;
@@ -26,11 +26,13 @@ xdescribe('BoardListItemComponent', () => {
 
   it('deleteBoard', () => {
     const spy = spyOn(component.delete, 'emit');
+    const id = boardsMock[0].id;
+    component.board.id = id;
 
-    const link = debug.nativeElement.querySelector('.deleteBtn').querySelector('button');
+    const link = debug.nativeElement.querySelector('button');
     link.click();
     fixture.detectChanges();
 
-    expect(spy).toHaveBeenCalledOnceWith(boardsMock[0].id);
+    expect(spy).toHaveBeenCalledOnceWith(id);
   });
 });

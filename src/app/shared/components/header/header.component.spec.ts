@@ -1,49 +1,50 @@
-import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { AuthService } from 'src/app/auth';
-
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  let router: Router;
   let authService: AuthService;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        HttpClientModule,
-        FormsModule, ReactiveFormsModule
+        FormsModule,
+        ReactiveFormsModule,
+        RouterTestingModule,
       ],
-      providers: [{
-        provide: AuthService,
-        useValue: {
-          logout: jasmine.createSpy().and.returnValue(of(null)),
+      providers: [
+        {
+          provide: AuthService,
+          useValue: {
+            logout: jasmine.createSpy().and.returnValue(of(null)),
+          },
         },
-      }],
-      declarations: [ HeaderComponent ]
-    })
-    .compileComponents();
+      ],
+      declarations: [HeaderComponent],
+    }).compileComponents();
 
-    router = TestBed.inject(Router);
-    spyOn(router, 'navigate');
-
+    router = TestBed.get(Router);
     fixture = TestBed.createComponent(HeaderComponent);
-    authService = fixture.componentRef.injector.get(AuthService)
+    authService = fixture.componentRef.injector.get(AuthService);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
   xit('exit', () => {
-    component.exit()
-    expect(authService.logout).toHaveBeenCalled()
+    component.exit();
+    authService.logout()
+    fixture.detectChanges();
+    router.navigate(['/login']);
   });
 });

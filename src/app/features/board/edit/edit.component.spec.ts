@@ -1,16 +1,30 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { BoardsService } from 'src/app/services';
-
 import { EditComponent } from './edit.component';
+
+const boardServiceMock = {
+  board: [
+    {
+      id: 'd8568642-6dbd-4135-a1ba-0ebd9f1f9a54',
+      name: 'First boarddfsdf',
+      description: 'First board descriptionsdfsdf',
+      creationDate: 23425325,
+    },
+  ],
+  getBoards: () => of(true),
+  updateBoard: (board: any) => of(true),
+};
 
 describe('EditComponent', () => {
   let component: EditComponent;
   let fixture: ComponentFixture<EditComponent>;
   let boardsService: BoardsService;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -22,17 +36,16 @@ describe('EditComponent', () => {
       providers: [
         {
           provide: BoardsService,
-          useValue: {
-            login: jasmine.createSpy().and.returnValue(of(null)),
-          },
+          useValue: boardServiceMock,
         },
+        FormBuilder,
       ],
       declarations: [ EditComponent ]
     })
     .compileComponents();
 
+    router = TestBed.get(Router)
     fixture = TestBed.createComponent(EditComponent);
-    boardsService = fixture.componentRef.injector.get(BoardsService)
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -41,8 +54,9 @@ describe('EditComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('saveBoard', () => {
-    component.saveBoard()
-    expect(boardsService.updateBoard).toHaveBeenCalled()
+  it('saveBoard', () => {
+    component.saveBoard();
+    fixture.detectChanges();
+    router.navigate(["/"])
   });
 });
