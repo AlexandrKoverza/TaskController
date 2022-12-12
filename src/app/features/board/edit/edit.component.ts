@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
-import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { EMPTY, Observable, switchMap } from 'rxjs';
 import { BoardsService } from 'src/app/services/boards.service';
 import { Board } from '../../../models';
@@ -45,7 +45,6 @@ export class EditComponent implements OnInit {
       });
       this.board.creationDate = board.creationDate;
     });
-
   }
 
   showBoards() {

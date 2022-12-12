@@ -1,15 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { TaskComponent } from './task.component';
 import { BoardsService } from '../../../../../services';
-import { BoardsServiceMock } from '../../../../../services/boards.service.mock';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { ITask } from '../../../../../models/task';
 import { IComment } from '../../../../../models/comment';
 import { DebugElement } from '@angular/core';
-import { commentsMock } from 'src/mocks/comments-mock';
 
 const boardServiceMock = {
   board: [

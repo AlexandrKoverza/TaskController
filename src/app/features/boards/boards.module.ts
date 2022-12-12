@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 import { BoardListItemComponent } from './components/board-list-item/board-list-item.component';
 
-
 @NgModule({
   declarations: [
     BoardsComponent,

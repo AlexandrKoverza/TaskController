@@ -19,8 +19,8 @@ import { BoardsService } from 'src/app/services';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ColumnComponent implements OnInit {
-  @Input() board: any;
-  @Input() column: any;
+  @Input() board: any = {};
+  @Input() column: any = {};
 
   filterName: string | undefined;
 

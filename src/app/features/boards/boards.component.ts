@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Board, BoardBase } from "../../models";
+import { BoardBase } from "../../models";
 import { BoardsService, ModalService } from '../../services';
 
 @Component({

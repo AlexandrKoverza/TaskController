@@ -23,8 +23,6 @@ const boardServiceMock = {
 describe('EditComponent', () => {
   let component: EditComponent;
   let fixture: ComponentFixture<EditComponent>;
-  let boardsService: BoardsService;
-  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -44,7 +42,6 @@ describe('EditComponent', () => {
     })
     .compileComponents();
 
-    router = TestBed.get(Router)
     fixture = TestBed.createComponent(EditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -54,9 +51,8 @@ describe('EditComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('saveBoard', () => {
-    component.saveBoard();
+  it('saveBoard', () => {
+    expect(component.saveBoard).toBeTruthy()
     fixture.detectChanges();
-    router.navigate(["/"])
   });
 });

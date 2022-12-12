@@ -1,11 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { BoardsService, ModalService } from 'src/app/services';
-import { boardsMock } from 'src/mocks/boards-mock';
 import { BoardPopupComponent } from './board-popup.component';
 
 const boardServiceMock = {
@@ -16,9 +14,7 @@ const boardServiceMock = {
 describe('PopupComponent', () => {
   let component: BoardPopupComponent;
   let fixture: ComponentFixture<BoardPopupComponent>;
-  let boardsService: BoardsService;
   let modalService: ModalService;
-  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -45,7 +41,6 @@ describe('PopupComponent', () => {
     })
     .compileComponents();
 
-    router = TestBed.get(Router)
     fixture = TestBed.createComponent(BoardPopupComponent);
     modalService = fixture.componentRef.injector.get(ModalService)
     component = fixture.componentInstance;

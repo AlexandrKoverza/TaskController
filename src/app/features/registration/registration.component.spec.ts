@@ -3,7 +3,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { AuthService } from 'src/app/auth';
-
 import { RegistrationComponent } from './registration.component';
 
 describe('RegistrationComponent', () => {
