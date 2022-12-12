@@ -2,8 +2,8 @@
   "boards": [
     {
       "id": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
-      "name": "First boarddfsdf",
-      "description": "First board descriptionsdfsdf",
+      "name": "First board",
+      "description": "First board description",
       "creationDate": 23425325
     }
   ],
@@ -45,46 +45,28 @@
       "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
     },
     {
-      "id": 1670533334491,
-      "description": "первая задача1",
-      "color": "#CECF9C",
-      "type": "toDo",
-      "creationDate": 1670533334491,
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
-    },
-    {
       "id": 1670539445003,
       "description": "3.3",
       "color": "#31CF63",
       "type": "done",
       "creationDate": 1670539445003,
       "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
+    },
+    {
+      "id": 1670694567876,
+      "description": "asdasdas",
+      "color": "#CECF9C",
+      "type": "toDo",
+      "creationDate": 1670694567876,
+      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54"
     }
   ],
   "comments": [
-    {
-      "id": 1670539361466,
-      "text": "22",
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
-      "taskId": 1670533334491
-    },
-    {
-      "id": 1670539369947,
-      "text": "33",
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
-      "taskId": 1670533334491
-    },
     {
       "id": 1670539534379,
       "text": "333",
       "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
       "taskId": 1670539445003
-    },
-    {
-      "id": 1670622694664,
-      "text": "jhgj",
-      "boardId": "d8568642-6dbd-4135-a1ba-0ebd9f1f9a54",
-      "taskId": 1670533334491
     }
   ],
   "users": [

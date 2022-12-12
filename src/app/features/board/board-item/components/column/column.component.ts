@@ -1,21 +1,14 @@
 import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
-import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
-  EventEmitter,
   Input,
   OnInit,
-  Output,
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { EMPTY, Observable, switchMap } from 'rxjs';
+import { ActivatedRoute, Params } from '@angular/router';
+import { EMPTY, Observable } from 'rxjs';
 import { boardColumns } from 'src/app/constants/board-columns';
+import { Board } from 'src/app/models';
 import { BoardColumn } from 'src/app/models/board-column';
 import { BoardsService } from 'src/app/services';
 
@@ -28,7 +21,12 @@ import { BoardsService } from 'src/app/services';
 export class ColumnComponent implements OnInit {
   @Input() board: any;
   @Input() column: any;
-  @Output() update: EventEmitter<void> = new EventEmitter();
+
+  filterName: string | undefined;
+
+  boardColumns: BoardColumn[] = [...boardColumns];
+  board$: Observable<Board | null> = EMPTY;
+  boards: any[] = [];
 
   form = this.formBuilder.group({
     description: ['', Validators.required],
@@ -37,58 +35,47 @@ export class ColumnComponent implements OnInit {
   constructor(
     private boardsService: BoardsService,
     private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private changeDetectionRef: ChangeDetectorRef
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
-    console.log('sdfsdfsdf');
+    this.board$ = this.boardsService.getBoard$();
+    this.showBoard();
   }
 
-  addTask(type: string, color: string, boardId: any, column: any) {
+  showBoard() {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.boardsService.updateBoardInfo(params['id']);
+    });
+  }
+
+  addTask(type: string, color: string, boardId: string, column: any) {
     this.boardsService
       .createTask({
         id: Date.now(),
-        description: this.form.value.description as string,
-        color: color as string,
-        type: type as string,
+        description: this.form.value.description,
+        color: color,
+        type: type,
         creationDate: Date.now(),
-        boardId: boardId as string,
+        boardId: boardId,
       })
       .subscribe(() => {
-        this.update.emit();
+        this.showBoard();
+        this.filterName = '';
       });
   }
 
-  onDeleteTask(itemId: number | string) {
+  onDeleteTask(itemId: number) {
     this.boardsService.deleteTask(itemId).subscribe(() => {
-      this.column = this.column.filter((item: { id: string | number; }) => item.id !== itemId);
-      this.update.emit();
+      this.boards = this.boards.filter((item) => item.id !== itemId);
+      this.showBoard();
     });
   }
 
-  onDeleteComment(commentId: number | string) {
+  onDeleteComment(commentId: number) {
     return this.boardsService.deleteComment(commentId).subscribe(() => {
-      this.column = this.column.filter((item: { id: string | number; }) => item.id !== commentId);
-      // this.showBoard();
+      this.boards = this.boards.filter((item) => item.id !== commentId);
+      this.showBoard();
     });
-  }
-
-  drop(event: CdkDragDrop<any[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
   }
 }

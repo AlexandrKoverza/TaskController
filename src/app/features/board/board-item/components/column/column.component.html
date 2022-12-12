@@ -1,51 +1,26 @@
-<!-- <div class="tasks-row">
-    <div class="task" *ngFor="let column of boardColumns">
-      <div class="task-do__top">
-        <span class="task-do__name">{{ column.type }}</span>
-        <form class="task-do__block" [formGroup]="form" (ngSubmit)="addTask(column.type, column.color, board.id, column)">
-          <input type="text" class="task-do__input" placeholder="create new task" formControlName="description"/>
-          <button class="task-do__button">
-            <img src="assets/images/plus.svg" alt="image" />
-          </button>
-        </form>
-      </div>
-      <div *ngFor="let item of board.tasks">
-        <div *ngIf="item.type === column.type">
-          <div class="task-list">
-            <app-task cdkDrag [cdkDragData]="item" [item]="item" (emitDeleteItem)="onDeleteTask(item.id)">
-              <div *ngFor="let comment of board.comments">
-                <div *ngIf="comment.taskId === item.id">
-                  <app-comment [comment]="comment" (emitComment)="onDeleteComment(comment.id)">
-                  </app-comment>
-                </div>
-              </div>
-            </app-task>
+<div class="task-do__top">
+  <span class="task-do__name">{{ column.type }}</span>
+  <form class="task-do__block" [formGroup]="form"
+    (ngSubmit)="addTask(column.type, column.color, board.id, column)">
+    <input type="text" class="task-do__input" placeholder="create new task" formControlName="description"
+      [(ngModel)]="filterName" name="filterName" />
+    <button class="task-do__button">
+      <img src="assets/images/plus.svg" alt="image" />
+    </button>
+  </form>
+</div>
+<div *ngFor="let task of board.tasks">
+  <div *ngIf="task.type === column.type">
+    <div class="task-list">
+      <app-task cdkDrag [cdkDragData]="task" [task]="task" [comments]="board.comments"
+        (emitDeleteItem)="onDeleteTask(task.id)">
+        <div *ngFor="let comment of board.comments">
+          <div *ngIf="comment.taskId === task.id">
+            <app-comment [comment]="comment" (emitComment)="onDeleteComment(comment.id)">
+            </app-comment>
           </div>
         </div>
-      </div>
-    </div>
-  </div> -->
-
-  <div class="task-do__top">
-    <span class="task-do__name">{{ column.type }}</span>
-    <form class="task-do__block" [formGroup]="form" (ngSubmit)="addTask(column.type, column.color, board.id, column)" >
-      <input type="text" class="task-do__input" placeholder="create new task" formControlName="description"/>
-      <button class="task-do__button">
-        <img src="assets/images/plus.svg" alt="image" />
-      </button>
-    </form>
-  </div>
-  <div *ngFor="let item of board.tasks">
-    <div *ngIf="item.type === column.type">
-      <div class="task-list">
-        <app-task cdkDrag [cdkDragData]="item" [task]="item" (emitDeleteItem)="onDeleteTask(item.id)">
-          <div *ngFor="let comment of board.comments">
-            <div *ngIf="comment.taskId === item.id">
-              <app-comment [comment]="comment" (emitComment)="onDeleteComment(comment.id)">
-              </app-comment>
-            </div>
-          </div>
-        </app-task>
-      </div>
+      </app-task>
     </div>
   </div>
+</div>

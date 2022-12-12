@@ -10,6 +10,7 @@ describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
   let fixture: ComponentFixture<RegistrationComponent>;
   let authService: AuthService;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -21,17 +22,12 @@ describe('RegistrationComponent', () => {
                   registration: jasmine.createSpy().and.returnValue(of(null)),
                 },
               },
-              {
-                provide: Router,
-                useValue: {
-                  navigate: jasmine.createSpy()
-                },
-              },
             ],
       declarations: [RegistrationComponent],
     }).compileComponents();
     
     fixture = TestBed.createComponent(RegistrationComponent);
+    router = TestBed.get(Router);
     authService = fixture.componentRef.injector.get(AuthService)
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -44,5 +40,6 @@ describe('RegistrationComponent', () => {
   it('registration', () => {
     component.registration()
     expect(authService.registration).toHaveBeenCalled()
+    router.navigate(['/']);
   });
 });

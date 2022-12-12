@@ -15,7 +15,6 @@ describe('HeaderService', () => {
   });
 
   it('headerVisible should be false', () => {
-    service = TestBed.inject(HeaderService);
     expect(service.headerVisible).toBeFalse();
   });
 });

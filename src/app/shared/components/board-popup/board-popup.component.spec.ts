@@ -59,7 +59,6 @@ describe('PopupComponent', () => {
   it('submit', () => {
     component.submit();
     expect(modalService.close).toHaveBeenCalled()
-
   });
 
   it('closePopup', () => {

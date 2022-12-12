@@ -19,7 +19,6 @@ export class BoardsComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-    // this.showBoards()
     this.boardsService.getBoards$().subscribe(boards => {
       this.boards = boards;
       this.changeDetectionRef.markForCheck()
@@ -27,12 +26,6 @@ export class BoardsComponent implements OnInit{
 
     this.boardsService.updateBoards();
   }
-
-  // showBoards() {
-  //   this.boardsService.getBoards().subscribe((boards) => {
-  //     this.boards = boards
-  //   })
-  // }
 
   deleteBoard(id: string) {
     return this.boardsService.deleteBoard(id).subscribe(() => {

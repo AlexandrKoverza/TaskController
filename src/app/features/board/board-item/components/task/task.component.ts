@@ -23,20 +23,20 @@ import { ITask } from "../../../../../models/task";
 })
 export class TaskComponent implements OnInit {
   boards: Board[] = [];
-
   board$: Observable<Board | null> = EMPTY;
 
   @Input() task: ITask = {} as ITask;
-
   @Input() comments?: IComment[] = [];
   @Output() emitDeleteItem: EventEmitter<number> = new EventEmitter();
 
   comment = this.formBuilder.group({
     text: ["", Validators.required]
   });
+
   form = this.formBuilder.group({
     description: ["", Validators.required]
   });
+  
   commentInput = "";
   open = false;
   edit = false;
@@ -88,7 +88,6 @@ export class TaskComponent implements OnInit {
   }
 
   updateTaskDescription(item: ITask) {
-    // console.log('form',this.form.value);
     this.boardsService.updateTask({
       ...item,
       description: this.form.value.description

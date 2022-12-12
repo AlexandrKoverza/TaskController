@@ -9,6 +9,7 @@ describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let authService: AuthService;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -20,17 +21,12 @@ describe('LoginComponent', () => {
             login: jasmine.createSpy().and.returnValue(of(null)),
           },
         },
-        {
-          provide: Router,
-          useValue: {
-            navigate: jasmine.createSpy()
-          },
-        },
       ],
       declarations: [LoginComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);
+    router = TestBed.get(Router);
     authService = fixture.componentRef.injector.get(AuthService)
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -43,5 +39,6 @@ describe('LoginComponent', () => {
   it('login', () => {
     component.login()
     expect(authService.login).toHaveBeenCalled()
+    router.navigate(['/']);
   });
 });

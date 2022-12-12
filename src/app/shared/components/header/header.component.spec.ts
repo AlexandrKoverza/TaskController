@@ -17,7 +17,9 @@ describe('HeaderComponent', () => {
       imports: [
         FormsModule,
         ReactiveFormsModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(
+          [{path: 'login', component: HeaderComponent}]
+        )
       ],
       providers: [
         {
@@ -41,9 +43,9 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('exit', () => {
+  it('exit', () => {
     component.exit();
-    authService.logout()
+    expect(authService.logout).toHaveBeenCalled()
     fixture.detectChanges();
     router.navigate(['/login']);
   });

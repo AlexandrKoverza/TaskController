@@ -19,29 +19,27 @@ export class BoardsService {
 
   constructor(private http: HttpClient) {}
 
-  //boards
-  getBoard(id: string): Observable<Board> {
-    return this.http.get<Board>(`${this.url}/${id}?_embed=tasks&_embed=comments`);
-  }
-
-  updateBoardInfo(boardId: string): void {
-    this.getBoard(boardId).subscribe(board => {
-      // console.log(board);
-      this.board$.next(board);
-    });
-  };
-
   getBoard$(): Observable<Board | null> {
     return this.board$.asObservable();
+  }
+
+  getBoards$(): Observable<BoardBase[]> {
+    return this.boards$.asObservable();
+  }
+
+  getBoard(id: string): Observable<Board> {
+    return this.http.get<Board>(`${this.url}/${id}?_embed=tasks&_embed=comments`);
   }
 
   getBoards(): Observable<BoardBase[]> {
     return this.http.get<BoardBase[]>(this.url);
   }
 
-  getBoards$(): Observable<BoardBase[]> {
-    return this.boards$.asObservable();
-  }
+  updateBoardInfo(boardId: string): void {
+    this.getBoard(boardId).subscribe(board => {
+      this.board$.next(board);
+    });
+  };
 
   updateBoards(): void {
     this.getBoards().subscribe(boards => {
